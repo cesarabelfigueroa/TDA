@@ -56,9 +56,10 @@ public class LinkedList {
                         actual = actual.getNext();
                         current++;
                     }
-                    next = actual.getNext();
+                    Node olderNext = actual.getNext();
+                    next = new Node(value);
                     actual.setNext(new Node(value));
-                    actual.getNext().setNext(next);
+                    next.setNext(olderNext);
                     size++;
                 } else if (position == 0) {
                     next = head;
