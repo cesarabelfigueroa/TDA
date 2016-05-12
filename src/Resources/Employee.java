@@ -1,19 +1,26 @@
 package Resources;
 
+import Structures.LinkedList;
+import Structures.Queue;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Employee extends Thread {
+
     private String names;
     private String id_number;
     private int age;
     private String address;
     private double salary;
+    Application application;
 
-    public Employee(String names, String id_number, int age, String address, double salary) {
+    public Employee(String names, String id_number, int age, String address, double salary, Application application) {
         this.names = names;
         this.id_number = id_number;
         this.age = age;
         this.address = address;
         this.salary = salary;
+        this.application = application;
     }
 
     public String getNames() {
@@ -61,5 +68,27 @@ public class Employee extends Thread {
         return names;
     }
 
-    
-}
+    @Override
+    public void run() {
+        execute();
+    }
+
+    public void execute() {
+        Queue materials = application.getMaterials();
+        LinkedList products = application.getProducts();
+        while (!materials.isEmpty()) {
+            Material material = (Material) materials.dequeue();
+            Product product = (Product) products.at(0);
+            int time = 1;
+            while (time != product.getTime()) {
+                try {
+                    System.out.println(this.getNames() + " está construyendo: " + material);
+                    Thread.sleep(1000);
+                    time++;
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
+}   

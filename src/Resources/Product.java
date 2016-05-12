@@ -1,19 +1,17 @@
 package Resources;
 
 import Structures.LinkedList;
-import java.sql.Time;
 
-public class Products {
+public class Product {
     private String name;
     private String description;
-    private Time time;
-    private LinkedList materials;
+    private int time;
+    private LinkedList materials = new LinkedList();
 
-    public Products(String name, String description, Time time, LinkedList materials) {
+    public Product(String name, String description, int time) {
         this.name = name;
         this.description = description;
         this.time = time;
-        this.materials = materials;
     }
 
     public String getName() {
@@ -32,11 +30,11 @@ public class Products {
         this.description = description;
     }
 
-    public Time getTime() {
+    public int getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(int time) {
         this.time = time;
     }
 
@@ -52,6 +50,4 @@ public class Products {
     public String toString() {
         return name;
     }
-    
-    
 }
