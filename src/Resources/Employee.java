@@ -76,19 +76,33 @@ public class Employee extends Thread {
     public void execute() {
         Queue materials = application.getMaterials();
         LinkedList products = application.getProducts();
-        while (!materials.isEmpty()) {
-            Material material = (Material) materials.dequeue();
-            Product product = (Product) products.at(0);
-            int time = 1;
-            while (time != product.getTime()) {
-                try {
-                    System.out.println(this.getNames() + " está construyendo: " + material);
-                    Thread.sleep(1000);
-                    time++;
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
+        for (int i = 0; i < products.getSize(); i++) {
+            LinkedList recentProductions = new LinkedList();
+            try {
+                Product product = (Product) products.at(i);
+                LinkedList requiredMaterials = product.getMaterials();
+                
+                while (!materials.isEmpty()) {
+                    for (int j = 0; j < requiredMaterials.getSize(); j++) {
+                        if (materials != null && !materials.isEmpty()) {
+                            if (requiredMaterials.find(materials.peek()) != -1) {
+                                if (!materials.isEmpty()) {
+                                    Material material = (Material) materials.dequeue();
+                                    recentProductions.insert(recentProductions.getSize() > 0 ? recentProductions.getSize() - 1 : 0, material);
+                                }
+                            }
+                        }
+                    }
                 }
+                if (requiredMaterials.getSize() == recentProductions.getSize()) {
+                    System.out.println("si ajustaron los materiales");
+                } else {
+                    System.out.println("No ajustaron los materiales");
+                }
+                
+            } catch (Exception ex) {
+                
             }
         }
     }
-}   
+}
