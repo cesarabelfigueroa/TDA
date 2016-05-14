@@ -78,7 +78,7 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="262" max="-2" attributes="0"/>
-                                  <Component id="jButton4" min="-2" pref="212" max="-2" attributes="0"/>
+                                  <Component id="btn_create_materials" min="-2" pref="212" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="207" max="32767" attributes="0"/>
@@ -109,7 +109,7 @@
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="31" max="32767" attributes="0"/>
-                          <Component id="jButton4" min="-2" pref="52" max="-2" attributes="0"/>
+                          <Component id="btn_create_materials" min="-2" pref="52" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -157,7 +157,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="snum_materials">
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton4">
+                <Component class="javax.swing.JButton" name="btn_create_materials">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Pictures/create.png"/>
@@ -182,15 +182,20 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="204" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
                                       <Component id="mod_name_matreials" alignment="0" max="32767" attributes="0"/>
@@ -201,7 +206,7 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="264" max="-2" attributes="0"/>
-                                  <Component id="jButton5" min="-2" pref="217" max="-2" attributes="0"/>
+                                  <Component id="btn_modify_materials" min="-2" pref="217" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="205" max="32767" attributes="0"/>
@@ -243,7 +248,7 @@
                               <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="36" max="32767" attributes="0"/>
-                          <Component id="jButton5" min="-2" pref="53" max="-2" attributes="0"/>
+                          <Component id="btn_modify_materials" min="-2" pref="53" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -291,7 +296,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="mod_snum_materials">
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton5">
+                <Component class="javax.swing.JButton" name="btn_modify_materials">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Pictures/check.png"/>
@@ -338,7 +343,7 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jButton6" min="-2" pref="241" max="-2" attributes="0"/>
+                          <Component id="btn_delete_materials" min="-2" pref="241" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="244" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -351,7 +356,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPane3" min="-2" pref="170" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                          <Component id="jButton6" min="-2" pref="54" max="-2" attributes="0"/>
+                          <Component id="btn_delete_materials" min="-2" pref="54" max="-2" attributes="0"/>
                           <EmptySpace pref="77" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -384,7 +389,7 @@
                     <Property name="text" type="java.lang.String" value="SELECT  MATERIAL:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton6">
+                <Component class="javax.swing.JButton" name="btn_delete_materials">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Pictures/delete.png"/>
@@ -392,7 +397,7 @@
                     <Property name="text" type="java.lang.String" value="DELETE"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton6MouseClicked"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_delete_materialsMouseClicked"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -501,13 +506,13 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
-                                  <Component id="jButton7" min="-2" pref="231" max="-2" attributes="0"/>
+                                  <Component id="btn_create_products" min="-2" pref="231" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="77" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jButton10" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_add_materials" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
@@ -542,7 +547,7 @@
                                   <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                                   <Component id="jScrollPane7" min="-2" pref="125" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton10" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_add_materials" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -553,7 +558,7 @@
                                       <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="72" max="32767" attributes="0"/>
-                                  <Component id="jButton7" min="-2" pref="56" max="-2" attributes="0"/>
+                                  <Component id="btn_create_products" min="-2" pref="56" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -601,7 +606,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="time_products">
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton7">
+                <Component class="javax.swing.JButton" name="btn_create_products">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Pictures/create.png"/>
@@ -628,7 +633,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JButton" name="jButton10">
+                <Component class="javax.swing.JButton" name="btn_add_materials">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="ADD MATERIAL"/>
                   </Properties>
@@ -687,14 +692,14 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
-                                  <Component id="jButton8" min="-2" pref="231" max="-2" attributes="0"/>
+                                  <Component id="btn_modify_products" min="-2" pref="231" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
-                                  <Component id="jButton11" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_modify_add_material" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
@@ -703,7 +708,7 @@
                                       <Component id="jScrollPane12" min="-2" pref="319" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
-                                          <Component id="jButton15" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btn_modify_remove_material" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -720,11 +725,11 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jScrollPane9" min="-2" pref="125" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton11" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_modify_add_material" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jScrollPane12" min="-2" pref="125" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton15" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_modify_remove_material" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -751,7 +756,7 @@
                                       <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
-                                  <Component id="jButton8" min="-2" pref="59" max="-2" attributes="0"/>
+                                  <Component id="btn_modify_products" min="-2" pref="59" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
@@ -794,7 +799,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="mod_time_products">
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton8">
+                <Component class="javax.swing.JButton" name="btn_modify_products">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Pictures/check.png"/>
@@ -836,7 +841,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JButton" name="jButton11">
+                <Component class="javax.swing.JButton" name="btn_modify_add_material">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="ADD MATERIAL"/>
                   </Properties>
@@ -860,12 +865,12 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JButton" name="jButton15">
+                <Component class="javax.swing.JButton" name="btn_modify_remove_material">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="REMOVE MATERIAL"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton15MouseClicked"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_modify_remove_materialMouseClicked"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -893,7 +898,7 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="268" max="-2" attributes="0"/>
-                                  <Component id="jButton9" min="-2" pref="241" max="-2" attributes="0"/>
+                                  <Component id="btn_delete_products" min="-2" pref="241" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="109" max="32767" attributes="0"/>
@@ -908,7 +913,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPane6" min="-2" pref="170" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                          <Component id="jButton9" min="-2" pref="54" max="-2" attributes="0"/>
+                          <Component id="btn_delete_products" min="-2" pref="54" max="-2" attributes="0"/>
                           <EmptySpace pref="127" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -940,7 +945,7 @@
                     <Property name="text" type="java.lang.String" value="SELECT  PRODUCT:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton9">
+                <Component class="javax.swing.JButton" name="btn_delete_products">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Pictures/delete.png"/>
@@ -948,7 +953,7 @@
                     <Property name="text" type="java.lang.String" value="DELETE"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton9MouseClicked"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_delete_productsMouseClicked"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -1073,7 +1078,7 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="279" max="-2" attributes="0"/>
-                                  <Component id="jButton12" min="-2" pref="216" max="-2" attributes="0"/>
+                                  <Component id="btn_create_employees" min="-2" pref="216" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="91" pref="225" max="32767" attributes="0"/>
@@ -1109,7 +1114,7 @@
                               <Component id="jLabel30" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jButton12" min="-2" pref="55" max="-2" attributes="0"/>
+                          <Component id="btn_create_employees" min="-2" pref="55" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1150,7 +1155,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="salary_employees">
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton12">
+                <Component class="javax.swing.JButton" name="btn_create_employees">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Pictures/create.png"/>
@@ -1219,7 +1224,7 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="288" max="-2" attributes="0"/>
-                                  <Component id="jButton14" min="-2" pref="217" max="-2" attributes="0"/>
+                                  <Component id="btn_modify_employees" min="-2" pref="217" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -1260,14 +1265,14 @@
                               <Component id="jLabel44" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jButton14" pref="54" max="32767" attributes="0"/>
+                          <Component id="btn_modify_employees" pref="54" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="jButton14">
+                <Component class="javax.swing.JButton" name="btn_modify_employees">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Pictures/check.png"/>
@@ -1361,7 +1366,7 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jButton16" min="-2" pref="241" max="-2" attributes="0"/>
+                                  <Component id="btn_delete_employees" min="-2" pref="241" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="265" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
@@ -1380,7 +1385,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPane17" min="-2" pref="170" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="jButton16" min="-2" pref="54" max="-2" attributes="0"/>
+                          <Component id="btn_delete_employees" min="-2" pref="54" max="-2" attributes="0"/>
                           <EmptySpace pref="144" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -1413,7 +1418,7 @@
                     <Property name="text" type="java.lang.String" value="SELECT  EMPLOYEE:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton16">
+                <Component class="javax.swing.JButton" name="btn_delete_employees">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Pictures/delete.png"/>
@@ -1421,7 +1426,7 @@
                     <Property name="text" type="java.lang.String" value="DELETE"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton16MouseClicked"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_delete_employeesMouseClicked"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -1436,17 +1441,25 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="jLabel33" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                          <Component id="cb_assembly" min="-2" pref="159" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="jLabel33" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                  <Component id="cb_assembly" min="-2" pref="159" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jLabel31" min="-2" pref="313" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
+                          <Component id="jLabel32" min="-2" pref="300" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jLabel31" min="-2" pref="313" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                          <Component id="jProgressBar1" min="-2" pref="722" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
-                  <Component id="jLabel32" min="-2" pref="300" max="-2" attributes="0"/>
                   <EmptySpace pref="30" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -1469,7 +1482,9 @@
                       <Component id="jLabel33" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cb_assembly" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="323" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                  <Component id="jProgressBar1" min="-2" pref="26" max="-2" attributes="0"/>
+                  <EmptySpace pref="259" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -1507,6 +1522,8 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
+        </Component>
+        <Component class="javax.swing.JProgressBar" name="jProgressBar1">
         </Component>
       </SubComponents>
     </Container>
@@ -1571,10 +1588,10 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jButton3" pref="191" max="32767" attributes="0"/>
+                      <Component id="btn_employees" pref="191" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jButton2" pref="191" max="32767" attributes="0"/>
-                          <Component id="jButton1" max="32767" attributes="0"/>
+                          <Component id="btn_products" pref="191" max="32767" attributes="0"/>
+                          <Component id="btn_materials" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="75" max="32767" attributes="0"/>
@@ -1585,18 +1602,18 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" pref="75" max="-2" attributes="0"/>
+                  <Component id="btn_materials" min="-2" pref="75" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="jButton2" min="-2" pref="76" max="-2" attributes="0"/>
+                  <Component id="btn_products" min="-2" pref="76" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                  <Component id="jButton3" min="-2" pref="76" max="-2" attributes="0"/>
+                  <Component id="btn_employees" min="-2" pref="76" max="-2" attributes="0"/>
                   <EmptySpace pref="70" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="btn_materials">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Pictures/screw.png"/>
@@ -1604,10 +1621,10 @@
             <Property name="text" type="java.lang.String" value="MATERIALS"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_materialsMouseClicked"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="btn_products">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Pictures/cart.png"/>
@@ -1615,10 +1632,10 @@
             <Property name="text" type="java.lang.String" value="PRODUCTS"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton2MouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_productsMouseClicked"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="btn_employees">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Pictures/man.png"/>
@@ -1626,7 +1643,7 @@
             <Property name="text" type="java.lang.String" value="EMPLOYEES"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton3MouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_employeesMouseClicked"/>
           </Events>
         </Component>
       </SubComponents>
@@ -1644,7 +1661,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="460" y="250" width="340" height="180"/>
+          <AbsoluteConstraints x="470" y="250" width="340" height="180"/>
         </Constraint>
       </Constraints>
 
@@ -1653,7 +1670,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                  <Component id="jButton13" min="-2" pref="251" max="-2" attributes="0"/>
+                  <Component id="btn_assembling" min="-2" pref="251" max="-2" attributes="0"/>
                   <EmptySpace pref="45" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -1662,14 +1679,14 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                  <Component id="jButton13" min="-2" pref="92" max="-2" attributes="0"/>
+                  <Component id="btn_assembling" min="-2" pref="92" max="-2" attributes="0"/>
                   <EmptySpace pref="44" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="jButton13">
+        <Component class="javax.swing.JButton" name="btn_assembling">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Pictures/process.png"/>
@@ -1677,7 +1694,7 @@
             <Property name="text" type="java.lang.String" value="ASSEMBLING PROCESS"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton13MouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_assemblingMouseClicked"/>
           </Events>
         </Component>
       </SubComponents>
@@ -1686,6 +1703,11 @@
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="66" red="66" type="rgb"/>
+        </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder/>
+          </Border>
         </Property>
       </Properties>
       <Constraints>
@@ -1700,14 +1722,14 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" pref="300" max="-2" attributes="0"/>
-                  <EmptySpace pref="20" max="32767" attributes="0"/>
+                  <EmptySpace pref="18" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="22" max="32767" attributes="0"/>
+                  <EmptySpace pref="20" max="32767" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               </Group>

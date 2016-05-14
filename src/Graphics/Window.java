@@ -41,7 +41,7 @@ public class Window extends javax.swing.JFrame {
         brand_materials = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         snum_materials = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        btn_create_materials = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         mod_name_matreials = new javax.swing.JTextField();
@@ -52,14 +52,14 @@ public class Window extends javax.swing.JFrame {
         mod_brand_materials = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         mod_snum_materials = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
+        btn_modify_materials = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         cb_material = new javax.swing.JComboBox<>();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         table_materials = new javax.swing.JTable();
         jLabel12 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
+        btn_delete_materials = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jd_products = new javax.swing.JDialog();
@@ -73,10 +73,10 @@ public class Window extends javax.swing.JFrame {
         desc_products = new javax.swing.JTextArea();
         jLabel15 = new javax.swing.JLabel();
         time_products = new javax.swing.JTextField();
-        jButton7 = new javax.swing.JButton();
+        btn_create_products = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
         mat_prod_1 = new javax.swing.JTable();
-        jButton10 = new javax.swing.JButton();
+        btn_add_materials = new javax.swing.JButton();
         jScrollPane13 = new javax.swing.JScrollPane();
         mat_prod_2 = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
@@ -87,20 +87,20 @@ public class Window extends javax.swing.JFrame {
         mod_desc_products = new javax.swing.JTextArea();
         jLabel19 = new javax.swing.JLabel();
         mod_time_products = new javax.swing.JTextField();
-        jButton8 = new javax.swing.JButton();
+        btn_modify_products = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
         cb_products = new javax.swing.JComboBox<>();
         jScrollPane9 = new javax.swing.JScrollPane();
         table_addmaterial = new javax.swing.JTable();
-        jButton11 = new javax.swing.JButton();
+        btn_modify_add_material = new javax.swing.JButton();
         jScrollPane12 = new javax.swing.JScrollPane();
         table_removematerial = new javax.swing.JTable();
-        jButton15 = new javax.swing.JButton();
+        btn_modify_remove_material = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         table_products = new javax.swing.JTable();
         jLabel22 = new javax.swing.JLabel();
-        jButton9 = new javax.swing.JButton();
+        btn_delete_products = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
         jd_employees = new javax.swing.JDialog();
         jLabel26 = new javax.swing.JLabel();
@@ -114,13 +114,13 @@ public class Window extends javax.swing.JFrame {
         address_employees = new javax.swing.JTextArea();
         jLabel30 = new javax.swing.JLabel();
         salary_employees = new javax.swing.JTextField();
-        jButton12 = new javax.swing.JButton();
+        btn_create_employees = new javax.swing.JButton();
         jLabel38 = new javax.swing.JLabel();
         idnum_employees = new javax.swing.JTextField();
         jLabel39 = new javax.swing.JLabel();
         age_employees = new javax.swing.JSpinner();
         jPanel11 = new javax.swing.JPanel();
-        jButton14 = new javax.swing.JButton();
+        btn_modify_employees = new javax.swing.JButton();
         jLabel35 = new javax.swing.JLabel();
         cb_employees = new javax.swing.JComboBox<>();
         jLabel40 = new javax.swing.JLabel();
@@ -138,20 +138,21 @@ public class Window extends javax.swing.JFrame {
         jScrollPane17 = new javax.swing.JScrollPane();
         table_employees = new javax.swing.JTable();
         jLabel37 = new javax.swing.JLabel();
-        jButton16 = new javax.swing.JButton();
+        btn_delete_employees = new javax.swing.JButton();
         jd_assembly = new javax.swing.JDialog();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         cb_assembly = new javax.swing.JComboBox<>();
+        jProgressBar1 = new javax.swing.JProgressBar();
         pp_menu = new javax.swing.JPopupMenu();
         menu_delete = new javax.swing.JMenuItem();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btn_materials = new javax.swing.JButton();
+        btn_products = new javax.swing.JButton();
+        btn_employees = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jButton13 = new javax.swing.JButton();
+        btn_assembling = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -168,8 +169,8 @@ public class Window extends javax.swing.JFrame {
 
         jLabel6.setText("Series Number: ");
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/create.png"))); // NOI18N
-        jButton4.setText("CREATE");
+        btn_create_materials.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/create.png"))); // NOI18N
+        btn_create_materials.setText("CREATE");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -192,7 +193,7 @@ public class Window extends javax.swing.JFrame {
                             .addComponent(snum_materials, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(262, 262, 262)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_create_materials, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(207, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -215,7 +216,7 @@ public class Window extends javax.swing.JFrame {
                     .addComponent(snum_materials, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_create_materials, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42))
         );
 
@@ -233,8 +234,8 @@ public class Window extends javax.swing.JFrame {
 
         jLabel10.setText("Series Number: ");
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/check.png"))); // NOI18N
-        jButton5.setText("SAVE");
+        btn_modify_materials.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/check.png"))); // NOI18N
+        btn_modify_materials.setText("SAVE");
 
         jLabel11.setText("SELECT MATERIAL:");
 
@@ -245,14 +246,17 @@ public class Window extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(204, 204, 204)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11))
-                        .addGap(40, 40, 40)
+                        .addGap(171, 171, 171)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel7)
+                                .addComponent(jLabel8)
+                                .addComponent(jLabel9)
+                                .addComponent(jLabel10))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addGap(16, 16, 16)))
+                        .addGap(57, 57, 57)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane2)
                             .addComponent(mod_name_matreials)
@@ -261,7 +265,7 @@ public class Window extends javax.swing.JFrame {
                             .addComponent(cb_material, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(264, 264, 264)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_modify_materials, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(205, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -291,7 +295,7 @@ public class Window extends javax.swing.JFrame {
                     .addComponent(mod_snum_materials, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_modify_materials, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
 
@@ -317,11 +321,11 @@ public class Window extends javax.swing.JFrame {
 
         jLabel12.setText("SELECT  MATERIAL:");
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/delete.png"))); // NOI18N
-        jButton6.setText("DELETE");
-        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_delete_materials.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/delete.png"))); // NOI18N
+        btn_delete_materials.setText("DELETE");
+        btn_delete_materials.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton6MouseClicked(evt);
+                btn_delete_materialsMouseClicked(evt);
             }
         });
 
@@ -337,7 +341,7 @@ public class Window extends javax.swing.JFrame {
                 .addContainerGap(63, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_delete_materials, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(244, 244, 244))
         );
         jPanel6Layout.setVerticalGroup(
@@ -348,7 +352,7 @@ public class Window extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_delete_materials, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(77, Short.MAX_VALUE))
         );
 
@@ -401,8 +405,8 @@ public class Window extends javax.swing.JFrame {
 
         jLabel15.setText("Time:");
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/create.png"))); // NOI18N
-        jButton7.setText("CREATE");
+        btn_create_products.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/create.png"))); // NOI18N
+        btn_create_products.setText("CREATE");
 
         mat_prod_1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -414,7 +418,7 @@ public class Window extends javax.swing.JFrame {
         ));
         jScrollPane7.setViewportView(mat_prod_1);
 
-        jButton10.setText("ADD MATERIAL");
+        btn_add_materials.setText("ADD MATERIAL");
 
         mat_prod_2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -445,11 +449,11 @@ public class Window extends javax.swing.JFrame {
                             .addComponent(name_products)))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(84, 84, 84)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_create_products, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addComponent(jButton10)
+                        .addComponent(btn_add_materials)
                         .addGap(135, 135, 135))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                         .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -475,7 +479,7 @@ public class Window extends javax.swing.JFrame {
                         .addGap(46, 46, 46)
                         .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton10)))
+                        .addComponent(btn_add_materials)))
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
@@ -483,7 +487,7 @@ public class Window extends javax.swing.JFrame {
                             .addComponent(time_products, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel15))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_create_products, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(71, 71, 71))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -503,8 +507,8 @@ public class Window extends javax.swing.JFrame {
 
         jLabel19.setText("Time:");
 
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/check.png"))); // NOI18N
-        jButton8.setText("SAVE");
+        btn_modify_products.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/check.png"))); // NOI18N
+        btn_modify_products.setText("SAVE");
 
         jLabel21.setText("SELECT PRODUCT:");
 
@@ -518,7 +522,7 @@ public class Window extends javax.swing.JFrame {
         ));
         jScrollPane9.setViewportView(table_addmaterial);
 
-        jButton11.setText("ADD MATERIAL");
+        btn_modify_add_material.setText("ADD MATERIAL");
 
         table_removematerial.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -530,10 +534,10 @@ public class Window extends javax.swing.JFrame {
         ));
         jScrollPane12.setViewportView(table_removematerial);
 
-        jButton15.setText("REMOVE MATERIAL");
-        jButton15.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_modify_remove_material.setText("REMOVE MATERIAL");
+        btn_modify_remove_material.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton15MouseClicked(evt);
+                btn_modify_remove_materialMouseClicked(evt);
             }
         });
 
@@ -559,12 +563,12 @@ public class Window extends javax.swing.JFrame {
                         .addGap(65, 65, 65))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(116, 116, 116)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_modify_products, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                         .addGap(119, 119, 119)
-                        .addComponent(jButton11)
+                        .addComponent(btn_modify_add_material)
                         .addGap(128, 128, 128))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -572,7 +576,7 @@ public class Window extends javax.swing.JFrame {
                             .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addGap(113, 113, 113)
-                                .addComponent(jButton15)))
+                                .addComponent(btn_modify_remove_material)))
                         .addContainerGap())))
         );
         jPanel8Layout.setVerticalGroup(
@@ -583,11 +587,11 @@ public class Window extends javax.swing.JFrame {
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton11)
+                        .addComponent(btn_modify_add_material)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton15))
+                        .addComponent(btn_modify_remove_material))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -607,7 +611,7 @@ public class Window extends javax.swing.JFrame {
                             .addComponent(mod_time_products, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel19))
                         .addGap(71, 71, 71)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_modify_products, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(59, 59, 59))
         );
 
@@ -633,11 +637,11 @@ public class Window extends javax.swing.JFrame {
 
         jLabel22.setText("SELECT  PRODUCT:");
 
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/delete.png"))); // NOI18N
-        jButton9.setText("DELETE");
-        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_delete_products.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/delete.png"))); // NOI18N
+        btn_delete_products.setText("DELETE");
+        btn_delete_products.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton9MouseClicked(evt);
+                btn_delete_productsMouseClicked(evt);
             }
         });
 
@@ -654,7 +658,7 @@ public class Window extends javax.swing.JFrame {
                             .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGap(268, 268, 268)
-                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_delete_products, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(109, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
@@ -665,7 +669,7 @@ public class Window extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
-                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_delete_products, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(127, Short.MAX_VALUE))
         );
 
@@ -721,8 +725,8 @@ public class Window extends javax.swing.JFrame {
 
         jLabel30.setText("Salary:");
 
-        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/create.png"))); // NOI18N
-        jButton12.setText("CREATE");
+        btn_create_employees.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/create.png"))); // NOI18N
+        btn_create_employees.setText("CREATE");
 
         jLabel38.setText("Id. Number:");
 
@@ -757,7 +761,7 @@ public class Window extends javax.swing.JFrame {
                                     .addComponent(idnum_employees)))))
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGap(279, 279, 279)
-                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_create_employees, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(91, 225, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
@@ -784,14 +788,14 @@ public class Window extends javax.swing.JFrame {
                     .addComponent(salary_employees, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel30))
                 .addGap(18, 18, 18)
-                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_create_employees, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
 
         jTabbedPane3.addTab("NEW", jPanel10);
 
-        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/check.png"))); // NOI18N
-        jButton14.setText("SAVE");
+        btn_modify_employees.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/check.png"))); // NOI18N
+        btn_modify_employees.setText("SAVE");
 
         jLabel35.setText("SELECT EMPLOYEE:");
 
@@ -840,7 +844,7 @@ public class Window extends javax.swing.JFrame {
                             .addComponent(mod_name_employees, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGap(288, 288, 288)
-                        .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_modify_employees, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
@@ -871,7 +875,7 @@ public class Window extends javax.swing.JFrame {
                     .addComponent(mod_salary_employees, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel44))
                 .addGap(18, 18, 18)
-                .addComponent(jButton14, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+                .addComponent(btn_modify_employees, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
                 .addGap(25, 25, 25))
         );
 
@@ -897,11 +901,11 @@ public class Window extends javax.swing.JFrame {
 
         jLabel37.setText("SELECT  EMPLOYEE:");
 
-        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/delete.png"))); // NOI18N
-        jButton16.setText("DELETE");
-        jButton16.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_delete_employees.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/delete.png"))); // NOI18N
+        btn_delete_employees.setText("DELETE");
+        btn_delete_employees.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton16MouseClicked(evt);
+                btn_delete_employeesMouseClicked(evt);
             }
         });
 
@@ -917,7 +921,7 @@ public class Window extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                        .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_delete_employees, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(265, 265, 265))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
                         .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -931,7 +935,7 @@ public class Window extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
-                .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_delete_employees, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(144, Short.MAX_VALUE))
         );
 
@@ -978,15 +982,20 @@ public class Window extends javax.swing.JFrame {
         jd_assemblyLayout.setHorizontalGroup(
             jd_assemblyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_assemblyLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
                 .addGroup(jd_assemblyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jd_assemblyLayout.createSequentialGroup()
-                        .addComponent(jLabel33)
-                        .addGap(43, 43, 43)
-                        .addComponent(cb_assembly, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(157, 157, 157)
-                .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addGroup(jd_assemblyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jd_assemblyLayout.createSequentialGroup()
+                                .addComponent(jLabel33)
+                                .addGap(43, 43, 43)
+                                .addComponent(cb_assembly, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(157, 157, 157)
+                        .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_assemblyLayout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 722, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         jd_assemblyLayout.setVerticalGroup(
@@ -1003,7 +1012,9 @@ public class Window extends javax.swing.JFrame {
                 .addGroup(jd_assemblyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel33)
                     .addComponent(cb_assembly, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(323, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(259, Short.MAX_VALUE))
         );
 
         menu_delete.setText("DELETE");
@@ -1015,27 +1026,27 @@ public class Window extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/screw.png"))); // NOI18N
-        jButton1.setText("MATERIALS");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_materials.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/screw.png"))); // NOI18N
+        btn_materials.setText("MATERIALS");
+        btn_materials.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                btn_materialsMouseClicked(evt);
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/cart.png"))); // NOI18N
-        jButton2.setText("PRODUCTS");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_products.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/cart.png"))); // NOI18N
+        btn_products.setText("PRODUCTS");
+        btn_products.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                btn_productsMouseClicked(evt);
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/man.png"))); // NOI18N
-        jButton3.setText("EMPLOYEES");
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_employees.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/man.png"))); // NOI18N
+        btn_employees.setText("EMPLOYEES");
+        btn_employees.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
+                btn_employeesMouseClicked(evt);
             }
         });
 
@@ -1046,21 +1057,21 @@ public class Window extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(73, 73, 73)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                    .addComponent(btn_employees, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btn_products, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                        .addComponent(btn_materials, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(75, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_materials, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_products, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_employees, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(70, Short.MAX_VALUE))
         );
 
@@ -1069,11 +1080,11 @@ public class Window extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/process.png"))); // NOI18N
-        jButton13.setText("ASSEMBLING PROCESS");
-        jButton13.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_assembling.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/process.png"))); // NOI18N
+        btn_assembling.setText("ASSEMBLING PROCESS");
+        btn_assembling.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton13MouseClicked(evt);
+                btn_assemblingMouseClicked(evt);
             }
         });
 
@@ -1083,20 +1094,21 @@ public class Window extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_assembling, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(45, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_assembling, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, 340, 180));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 340, 180));
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/logo.png"))); // NOI18N
 
@@ -1107,12 +1119,12 @@ public class Window extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(20, 20, 20))
         );
@@ -1125,73 +1137,73 @@ public class Window extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void btn_materialsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_materialsMouseClicked
         // TODO add your handling code here:
         jd_materials.setModal(true);
         jd_materials.pack();
         jd_materials.setLocationRelativeTo(this);
         jd_materials.setVisible(true);
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_btn_materialsMouseClicked
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+    private void btn_productsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_productsMouseClicked
         // TODO add your handling code here:
         jd_products.setModal(true);
         jd_products.pack();
         jd_products.setLocationRelativeTo(this);
         jd_products.setVisible(true);
-    }//GEN-LAST:event_jButton2MouseClicked
+    }//GEN-LAST:event_btn_productsMouseClicked
 
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+    private void btn_employeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_employeesMouseClicked
         // TODO add your handling code here:
         jd_employees.setModal(true);
         jd_employees.pack();
         jd_employees.setLocationRelativeTo(this);
         jd_employees.setVisible(true);
-    }//GEN-LAST:event_jButton3MouseClicked
+    }//GEN-LAST:event_btn_employeesMouseClicked
 
-    private void jButton13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MouseClicked
+    private void btn_assemblingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_assemblingMouseClicked
         // TODO add your handling code here:
         jd_assembly.setModal(true);
         jd_assembly.pack();
         jd_assembly.setLocationRelativeTo(this);
         jd_assembly.setVisible(true);
-    }//GEN-LAST:event_jButton13MouseClicked
+    }//GEN-LAST:event_btn_assemblingMouseClicked
 
-    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+    private void btn_delete_materialsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_delete_materialsMouseClicked
         // TODO add your handling code here:
         if(table_materials.getSelectedRow()>=0){
             DefaultTableModel modelo = (DefaultTableModel)table_materials.getModel();
             modelo.removeRow(table_materials.getSelectedRow());
             table_materials.setModel(modelo);
         }
-    }//GEN-LAST:event_jButton6MouseClicked
+    }//GEN-LAST:event_btn_delete_materialsMouseClicked
 
-    private void jButton15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseClicked
+    private void btn_modify_remove_materialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_modify_remove_materialMouseClicked
         // TODO add your handling code here:
         if(table_removematerial.getSelectedRow()>=0){
             DefaultTableModel modelo = (DefaultTableModel)table_removematerial.getModel();
             modelo.removeRow(table_removematerial.getSelectedRow());
             table_removematerial.setModel(modelo);
         }
-    }//GEN-LAST:event_jButton15MouseClicked
+    }//GEN-LAST:event_btn_modify_remove_materialMouseClicked
 
-    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+    private void btn_delete_productsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_delete_productsMouseClicked
         // TODO add your handling code here:
         if(table_products.getSelectedRow()>=0){
             DefaultTableModel modelo = (DefaultTableModel)table_products.getModel();
             modelo.removeRow(table_products.getSelectedRow());
             table_products.setModel(modelo);
         }
-    }//GEN-LAST:event_jButton9MouseClicked
+    }//GEN-LAST:event_btn_delete_productsMouseClicked
 
-    private void jButton16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton16MouseClicked
+    private void btn_delete_employeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_delete_employeesMouseClicked
         // TODO add your handling code here:
         if(table_employees.getSelectedRow()>=0){
             DefaultTableModel modelo = (DefaultTableModel)table_employees.getModel();
             modelo.removeRow(table_employees.getSelectedRow());
             table_employees.setModel(modelo);
         }
-    }//GEN-LAST:event_jButton16MouseClicked
+    }//GEN-LAST:event_btn_delete_employeesMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1232,6 +1244,22 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JTextArea address_employees;
     private javax.swing.JSpinner age_employees;
     private javax.swing.JTextField brand_materials;
+    private javax.swing.JButton btn_add_materials;
+    private javax.swing.JButton btn_assembling;
+    private javax.swing.JButton btn_create_employees;
+    private javax.swing.JButton btn_create_materials;
+    private javax.swing.JButton btn_create_products;
+    private javax.swing.JButton btn_delete_employees;
+    private javax.swing.JButton btn_delete_materials;
+    private javax.swing.JButton btn_delete_products;
+    private javax.swing.JButton btn_employees;
+    private javax.swing.JButton btn_materials;
+    private javax.swing.JButton btn_modify_add_material;
+    private javax.swing.JButton btn_modify_employees;
+    private javax.swing.JButton btn_modify_materials;
+    private javax.swing.JButton btn_modify_products;
+    private javax.swing.JButton btn_modify_remove_material;
+    private javax.swing.JButton btn_products;
     private javax.swing.JComboBox<String> cb_assembly;
     private javax.swing.JComboBox<String> cb_employees;
     private javax.swing.JComboBox<String> cb_material;
@@ -1239,22 +1267,6 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JTextArea desc_materials;
     private javax.swing.JTextArea desc_products;
     private javax.swing.JTextField idnum_employees;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1308,6 +1320,7 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
