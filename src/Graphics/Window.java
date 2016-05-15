@@ -1,18 +1,24 @@
 package Graphics;
 
+import Resources.Application;
+import Resources.Material;
+import Structures.LinkedList;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.jvnet.substance.SubstanceLookAndFeel;
 
-
 public class Window extends javax.swing.JFrame {
-     
+
+    Application application = new Application();
 
     public Window() {
         Window.setDefaultLookAndFeelDecorated(false);
         SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.RavenGraphiteGlassSkin");
         SubstanceLookAndFeel.setCurrentWatermark("org.jvnet.substance.watermark.SubstanceMetalWallWatermark");
         initComponents();
-        this.setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -34,7 +40,7 @@ public class Window extends javax.swing.JFrame {
         btn_create_materials = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        mod_name_matreials = new javax.swing.JTextField();
+        mod_name_materials = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         mod_desc_materials = new javax.swing.JTextArea();
@@ -161,6 +167,11 @@ public class Window extends javax.swing.JFrame {
 
         btn_create_materials.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/create.png"))); // NOI18N
         btn_create_materials.setText("CREATE");
+        btn_create_materials.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_create_materialsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -205,7 +216,7 @@ public class Window extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(snum_materials, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_create_materials, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42))
         );
@@ -226,8 +237,19 @@ public class Window extends javax.swing.JFrame {
 
         btn_modify_materials.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/check.png"))); // NOI18N
         btn_modify_materials.setText("SAVE");
+        btn_modify_materials.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modify_materialsActionPerformed(evt);
+            }
+        });
 
         jLabel11.setText("SELECT MATERIAL:");
+
+        cb_material.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_materialItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -249,9 +271,9 @@ public class Window extends javax.swing.JFrame {
                         .addGap(57, 57, 57)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane2)
-                            .addComponent(mod_name_matreials)
+                            .addComponent(mod_name_materials)
                             .addComponent(mod_brand_materials)
-                            .addComponent(mod_snum_materials, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                            .addComponent(mod_snum_materials)
                             .addComponent(cb_material, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(264, 264, 264)
@@ -271,7 +293,7 @@ public class Window extends javax.swing.JFrame {
                         .addGap(69, 69, 69)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(mod_name_matreials, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(mod_name_materials, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -302,9 +324,16 @@ public class Window extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jScrollPane3.setViewportView(table_materials);
@@ -316,6 +345,11 @@ public class Window extends javax.swing.JFrame {
         btn_delete_materials.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_delete_materialsMouseClicked(evt);
+            }
+        });
+        btn_delete_materials.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_delete_materialsActionPerformed(evt);
             }
         });
 
@@ -1048,9 +1082,8 @@ public class Window extends javax.swing.JFrame {
                 .addGap(73, 73, 73)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btn_employees, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btn_products, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
-                        .addComponent(btn_materials, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(btn_products, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                    .addComponent(btn_materials, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(75, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -1135,7 +1168,6 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_materialsMouseClicked
 
     private void btn_productsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_productsMouseClicked
-        // TODO add your handling code here:
         jd_products.setModal(true);
         jd_products.pack();
         jd_products.setLocationRelativeTo(this);
@@ -1143,7 +1175,6 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_productsMouseClicked
 
     private void btn_employeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_employeesMouseClicked
-        // TODO add your handling code here:
         jd_employees.setModal(true);
         jd_employees.pack();
         jd_employees.setLocationRelativeTo(this);
@@ -1151,7 +1182,6 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_employeesMouseClicked
 
     private void btn_assemblingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_assemblingMouseClicked
-        // TODO add your handling code here:
         jd_assembly.setModal(true);
         jd_assembly.pack();
         jd_assembly.setLocationRelativeTo(this);
@@ -1159,16 +1189,21 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_assemblingMouseClicked
 
     private void btn_delete_materialsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_delete_materialsMouseClicked
-        // TODO add your handling code here:
         if (table_materials.getSelectedRow() >= 0) {
+            mod_name_materials.setText("");
+            mod_desc_materials.setText("");
+            mod_brand_materials.setText("");
+            mod_snum_materials.setText("");
             DefaultTableModel modelo = (DefaultTableModel) table_materials.getModel();
+            String name = (String) modelo.getValueAt(table_materials.getSelectedRow(), 0);
+            application.deleteMaterial((Material) application.getMaterialsNames().at(application.indexOfMaterial(name)));
+            refreshMaterialCombobox(cb_material, application.getMaterialsNames());
             modelo.removeRow(table_materials.getSelectedRow());
             table_materials.setModel(modelo);
         }
     }//GEN-LAST:event_btn_delete_materialsMouseClicked
 
     private void btn_modify_remove_materialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_modify_remove_materialMouseClicked
-        // TODO add your handling code here:
         if (table_removematerial.getSelectedRow() >= 0) {
             DefaultTableModel modelo = (DefaultTableModel) table_removematerial.getModel();
             modelo.removeRow(table_removematerial.getSelectedRow());
@@ -1177,7 +1212,6 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_modify_remove_materialMouseClicked
 
     private void btn_delete_productsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_delete_productsMouseClicked
-        // TODO add your handling code here:
         if (table_products.getSelectedRow() >= 0) {
             DefaultTableModel modelo = (DefaultTableModel) table_products.getModel();
             modelo.removeRow(table_products.getSelectedRow());
@@ -1186,7 +1220,6 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_delete_productsMouseClicked
 
     private void btn_delete_employeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_delete_employeesMouseClicked
-        // TODO add your handling code here:
         if (table_employees.getSelectedRow() >= 0) {
             DefaultTableModel modelo = (DefaultTableModel) table_employees.getModel();
             modelo.removeRow(table_employees.getSelectedRow());
@@ -1194,49 +1227,96 @@ public class Window extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_delete_employeesMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Window.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Window.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Window.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Window.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    public void refreshMaterialsTable(DefaultTableModel material_tb_model, LinkedList elements) {
+        material_tb_model.setRowCount(0);
+        for (int i = 0; i < elements.getSize(); i++) {
+            Object[] row = new Object[4];
+            Material material = (Material) elements.at(i);
+            row[0] = material.getName();
+            row[1] = material.getDescription();
+            row[2] = material.getBrand();
+            row[3] = material.getSeries_number();
+            material_tb_model.addRow(row);
         }
-        //</editor-fold>
+    }
 
-        /* Create and display the form */
+    public void refreshMaterialCombobox(JComboBox material_cb, LinkedList elements) {
+        material_cb.setModel(new DefaultComboBoxModel());
+        DefaultComboBoxModel material_cb_model = (DefaultComboBoxModel) cb_material.getModel();
+        for (int i = 0; i < elements.getSize(); i++) {
+            Material material = (Material) elements.at(i);
+            material_cb_model.addElement(material);
+        }
+    }
+
+    private void btn_create_materialsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_create_materialsActionPerformed
+        String name = name_materials.getText();
+        if (application.indexOfMaterial(name) == -1) {
+            if (!name.isEmpty()) {
+                String description = desc_materials.getText();
+                String brand = brand_materials.getText();
+                String series_number = snum_materials.getText();
+                Material material = new Material(name, description, brand, series_number);
+                application.addMaterial(material);
+                DefaultTableModel material_tb_model = (DefaultTableModel) table_materials.getModel();
+                refreshMaterialsTable(material_tb_model, application.getMaterialsNames());
+                refreshMaterialCombobox(cb_material, application.getMaterialsNames());
+                name_materials.setText("");
+                desc_materials.setText("");
+                brand_materials.setText("");
+                snum_materials.setText("");
+            } else {
+                JOptionPane.showMessageDialog(this, "El material debe tener un nombre válido.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Los nombres de los materiales no pueden repetirse.");
+        }
+    }//GEN-LAST:event_btn_create_materialsActionPerformed
+
+    private void cb_materialItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_materialItemStateChanged
+        DefaultComboBoxModel material_cb_model = (DefaultComboBoxModel) cb_material.getModel();
+        Material material = (Material) material_cb_model.getSelectedItem();
+        mod_name_materials.setText(material.getName());
+        mod_desc_materials.setText(material.getDescription());
+        mod_brand_materials.setText(material.getBrand());
+        mod_snum_materials.setText(material.getSeries_number());
+    }//GEN-LAST:event_cb_materialItemStateChanged
+
+    private void btn_modify_materialsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modify_materialsActionPerformed
+        DefaultComboBoxModel material_cb_model = (DefaultComboBoxModel) cb_material.getModel();
+        Material material = (Material) material_cb_model.getSelectedItem();
+        String name = mod_name_materials.getText();
+        if (application.indexOfMaterial(name) == -1 || name.equals(material.getName())) {
+            if (!name.isEmpty()) {
+                DefaultTableModel material_tb_model = (DefaultTableModel) table_materials.getModel();
+                String description = mod_desc_materials.getText();
+                String brand = mod_brand_materials.getText();
+                String series_number = mod_snum_materials.getText();
+                mod_snum_materials.setText(material.getSeries_number());
+                material.setName(name);
+                material.setDescription(description);
+                material.setBrand(brand);
+                material.setSeries_number(series_number);
+                refreshMaterialsTable(material_tb_model, application.getMaterialsNames());
+            } else {
+                JOptionPane.showMessageDialog(this, "El material debe tener un nombre válido.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Los nombres de los materiales no pueden repetirse.");
+        }
+    }//GEN-LAST:event_btn_modify_materialsActionPerformed
+
+    private void btn_delete_materialsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_delete_materialsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_delete_materialsActionPerformed
+
+    public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Window().setVisible(true);
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea address_employees;
     private javax.swing.JSpinner age_employees;
@@ -1348,7 +1428,7 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JTextArea mod_desc_products;
     private javax.swing.JTextField mod_idnum_employees;
     private javax.swing.JTextField mod_name_employees;
-    private javax.swing.JTextField mod_name_matreials;
+    private javax.swing.JTextField mod_name_materials;
     private javax.swing.JTextField mod_name_products;
     private javax.swing.JTextField mod_salary_employees;
     private javax.swing.JTextField mod_snum_materials;

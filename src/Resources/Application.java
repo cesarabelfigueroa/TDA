@@ -11,31 +11,28 @@ public class Application {
     private Queue products = new Queue();
     private Queue employees = new Queue();
     private Stack materials = new Stack();
-    Boolean joining = false;
+    private LinkedList inventoryOfMaterials = new LinkedList();
 
     public Application() {
-        Material test1 = new Material("test1", "test1", "test1", 4);
-        Material test2 = new Material("test2", "test2", "test2", 4);
-        Material test3 = new Material("test3", "test3", "test3", 4);
-        Product product1 = new Product("prueba1", "prueba", 5);
-        Product product2 = new Product("prueba2", "prueba", 5);
-        Product product3 = new Product("prueba3", "prueba", 5);
-        product1.getMaterials().insert(0, test2);
-        product1.getMaterials().insert(0, test1);
-        product1.getMaterials().insert(0, test3);
-        products.queue(product1);
-        products.queue(product2);
-        products.queue(product3);
-        Employee person1 = new Employee("César", "0801-1997-22799", 18, "Casamata", 20000.0);
-        Employee person2 = new Employee("Juan", "0801-1997-22799", 18, "Casamata", 20000.0);
-        Employee person3 = new Employee("Pedro", "0801-1997-22799", 18, "Casamata", 20000.0);
-        employees.queue(person1);
-        employees.queue(person2);
-        employees.queue(person3);
-        materials.push(test1);
-        materials.push(test2);
-        materials.push(test3);
+
     }
+
+    public LinkedList getInventoryOfMaterials() {
+        return inventoryOfMaterials;
+    }
+
+    public void setInventoryOfMaterials(LinkedList inventoryOfMaterials) {
+        this.inventoryOfMaterials = inventoryOfMaterials;
+    }
+
+    public LinkedList getMaterialsNames() {
+        return materialsNames;
+    }
+
+    public void setMaterialsNames(LinkedList materialsNames) {
+        this.materialsNames = materialsNames;
+    }
+    private LinkedList materialsNames = new LinkedList();
 
     public Queue getProducts() {
         return products;
@@ -69,7 +66,7 @@ public class Application {
                     Product product = (Product) products.dequeue();
                     Employee employee = (Employee) employees.dequeue();
                     Material material = (Material) materials.pop();
-                    Runnable product_line = new ProductionLine(employee, product , material);
+                    Runnable product_line = new ProductionLine(employee, product, material);
                     executor.execute(product_line);
                     employees.queue(employee);
                 }
@@ -77,9 +74,76 @@ public class Application {
         }
         executor.shutdown();
     }
+
+    public void addMaterial(Material material) {
+        materialsNames.insert(materialsNames.getSize(), material);
+        inventoryOfMaterials = new LinkedList();
+        for (int i = 0; i < materialsNames.getSize(); i++) {
+            material = (Material) materialsNames.at(i);
+            if (inventoryOfMaterials.getSize() == 0) {
+                Stack temporal = new Stack();
+                temporal.push(material);
+                inventoryOfMaterials.insert(inventoryOfMaterials.getSize(), temporal);
+            } else {
+                for (int j = 0; j < inventoryOfMaterials.getSize(); j++) {
+                    Stack temporal = (Stack) inventoryOfMaterials.at(j);
+                    if (!temporal.isEmpty()) {
+                        if (((Material) temporal.peek()).getSeries_number().equals(material.getSeries_number())) {
+                            temporal.push(material);
+                        }
+                    } else {
+                        temporal.push(material);
+                    }
+                }
+
+                Stack temporal = new Stack();
+                temporal.push(material);
+                inventoryOfMaterials.insert(inventoryOfMaterials.getSize(), temporal);
+            }
+        }
+    }
+
+    public void deleteMaterial(Material material) {
+        if (material != null) {
+            int index = indexOfMaterial(material.getName());
+            if (index != -1) {
+                materialsNames.remove(index);
+                inventoryOfMaterials = new LinkedList();
+                for (int i = 0; i < materialsNames.getSize(); i++) {
+                    material = (Material) materialsNames.at(i);
+                    if (inventoryOfMaterials.getSize() == 0) {
+                        Stack temporal = new Stack();
+                        temporal.push(material);
+                        inventoryOfMaterials.insert(inventoryOfMaterials.getSize(), temporal);
+                    } else {
+                        for (int j = 0; j < inventoryOfMaterials.getSize(); j++) {
+                            Stack temporal = (Stack) inventoryOfMaterials.at(j);
+                            if (!temporal.isEmpty()) {
+                                if (((Material) temporal.peek()).getSeries_number().equals(material.getSeries_number())) {
+                                    temporal.push(material);
+                                }
+                            } else {
+                                temporal.push(material);
+                            }
+                        }
+
+                        Stack temporal = new Stack();
+                        temporal.push(material);
+                        inventoryOfMaterials.insert(inventoryOfMaterials.getSize(), temporal);
+                    }
+                }
+            }
+        }
+    }
     
-    
-    public boolean areEnoughMaterials(Product produt, LinkedList Materials){
-        return true;
+    public void addEmployee(){}
+
+    public int indexOfMaterial(String name) {
+        for (int i = 0; i < materialsNames.getSize(); i++) {
+            if (((Material) materialsNames.at(i)).getName().equals(name)) {
+                return i;
+            }
+        }
+        return -1;
     }
 }

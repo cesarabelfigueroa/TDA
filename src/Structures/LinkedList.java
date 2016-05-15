@@ -72,6 +72,7 @@ public class LinkedList {
             head = new Node(value);
             size++;
         }
+       
     }
 
     public int find(Object value) {
@@ -89,7 +90,7 @@ public class LinkedList {
                 int current = 0;
                 Node actual = head;
                 if (position > 0) {
-                    while (current != position - 1) {
+                    while (current < position - 1) {
                         actual = actual.getNext();
                         current++;
                     }

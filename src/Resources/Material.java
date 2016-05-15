@@ -4,9 +4,9 @@ public class Material {
     private String name;
     private String description;
     private String brand;
-    private int series_number;
+    private String series_number;
 
-    public Material(String name, String description, String brand, int series_number) {
+    public Material(String name, String description, String brand, String series_number) {
         this.name = name;
         this.description = description;
         this.brand = brand;
@@ -37,11 +37,11 @@ public class Material {
         this.brand = brand;
     }
 
-    public int getSeries_number() {
+    public String getSeries_number() {
         return series_number;
     }
 
-    public void setSeries_number(int series_number) {
+    public void setSeries_number(String series_number) {
         this.series_number = series_number;
     }
 

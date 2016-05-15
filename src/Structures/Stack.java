@@ -40,6 +40,9 @@ public class Stack {
     }
 
     public Object peek() {
-        return top.getValue();
+        if(top != null){
+            return top.getValue();
+        }
+        return null;
     }
 }
