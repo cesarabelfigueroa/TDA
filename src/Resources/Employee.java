@@ -1,12 +1,19 @@
 package Resources;
 
+import Structures.LinkedList;
+import Structures.Queue;
+import Structures.Stack;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class Employee extends Thread {
+public class Employee  {
+
     private String names;
     private String id_number;
     private int age;
     private String address;
     private double salary;
+
 
     public Employee(String names, String id_number, int age, String address, double salary) {
         this.names = names;
@@ -14,6 +21,7 @@ public class Employee extends Thread {
         this.age = age;
         this.address = address;
         this.salary = salary;
+    
     }
 
     public String getNames() {
@@ -60,6 +68,4 @@ public class Employee extends Thread {
     public String toString() {
         return names;
     }
-
-    
 }

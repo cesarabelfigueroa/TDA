@@ -74,13 +74,13 @@ public class LinkedList {
         }
     }
 
-    public Object find(Object value) {
+    public int find(Object value) {
         for (int i = 0; i < size; i++) {
             if (value.equals(at(i))) {
                 return i;
             }
         }
-        return null;
+        return -1;
     }
 
     public void remove(int position) {
