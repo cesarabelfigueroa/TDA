@@ -1589,10 +1589,8 @@
                   <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="btn_employees" pref="191" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btn_products" pref="191" max="32767" attributes="0"/>
-                          <Component id="btn_materials" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="btn_products" pref="191" max="32767" attributes="0"/>
+                      <Component id="btn_materials" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="75" max="32767" attributes="0"/>
               </Group>
