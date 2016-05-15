@@ -1,6 +1,7 @@
 package Graphics;
 
 import Resources.Application;
+import Resources.Employee;
 import Resources.Material;
 import Structures.LinkedList;
 import javax.swing.DefaultComboBoxModel;
@@ -751,6 +752,11 @@ public class Window extends javax.swing.JFrame {
 
         btn_create_employees.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/create.png"))); // NOI18N
         btn_create_employees.setText("CREATE");
+        btn_create_employees.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_create_employeesActionPerformed(evt);
+            }
+        });
 
         jLabel38.setText("Id. Number:");
 
@@ -820,8 +826,19 @@ public class Window extends javax.swing.JFrame {
 
         btn_modify_employees.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/check.png"))); // NOI18N
         btn_modify_employees.setText("SAVE");
+        btn_modify_employees.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modify_employeesActionPerformed(evt);
+            }
+        });
 
         jLabel35.setText("SELECT EMPLOYEE:");
+
+        cb_employees.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_employeesItemStateChanged(evt);
+            }
+        });
 
         jLabel40.setText("Name:");
 
@@ -899,7 +916,7 @@ public class Window extends javax.swing.JFrame {
                     .addComponent(mod_salary_employees, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel44))
                 .addGap(18, 18, 18)
-                .addComponent(btn_modify_employees, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+                .addComponent(btn_modify_employees, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(25, 25, 25))
         );
 
@@ -1221,7 +1238,15 @@ public class Window extends javax.swing.JFrame {
 
     private void btn_delete_employeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_delete_employeesMouseClicked
         if (table_employees.getSelectedRow() >= 0) {
+            mod_name_employees.setText("");
+            mod_address_employees.setText("");
+            mod_salary_employees.setText("");
+            mod_idnum_employees.setText("");
+            mod_age_employees.setValue(0);
             DefaultTableModel modelo = (DefaultTableModel) table_employees.getModel();
+            String id = (String) modelo.getValueAt(table_employees.getSelectedRow(), 1);
+            application.deleteEmployee((Employee) application.getListOfEmployees().at(application.indexOfEmployee(id)));
+            refreshMaterialCombobox(cb_employees, application.getListOfEmployees());
             modelo.removeRow(table_employees.getSelectedRow());
             table_employees.setModel(modelo);
         }
@@ -1230,22 +1255,34 @@ public class Window extends javax.swing.JFrame {
     public void refreshMaterialsTable(DefaultTableModel material_tb_model, LinkedList elements) {
         material_tb_model.setRowCount(0);
         for (int i = 0; i < elements.getSize(); i++) {
-            Object[] row = new Object[4];
-            Material material = (Material) elements.at(i);
-            row[0] = material.getName();
-            row[1] = material.getDescription();
-            row[2] = material.getBrand();
-            row[3] = material.getSeries_number();
-            material_tb_model.addRow(row);
+            Object element = elements.at(i);
+            if (element instanceof Material) {
+                Object[] row = new Object[4];
+                Material material = (Material) element;
+                row[0] = material.getName();
+                row[1] = material.getDescription();
+                row[2] = material.getBrand();
+                row[3] = material.getSeries_number();
+                material_tb_model.addRow(row);
+            } else if (element instanceof Employee) {
+                Object[] row = new Object[4];
+                Employee employee = (Employee) element;
+                row[0] = employee.getNames();
+                row[1] = employee.getId_number();
+                row[2] = employee.getAge();
+                row[3] = employee.getSalary();
+                material_tb_model.addRow(row);
+            }
+
         }
     }
 
     public void refreshMaterialCombobox(JComboBox material_cb, LinkedList elements) {
         material_cb.setModel(new DefaultComboBoxModel());
-        DefaultComboBoxModel material_cb_model = (DefaultComboBoxModel) cb_material.getModel();
+        DefaultComboBoxModel material_cb_model = (DefaultComboBoxModel) material_cb.getModel();
         for (int i = 0; i < elements.getSize(); i++) {
-            Material material = (Material) elements.at(i);
-            material_cb_model.addElement(material);
+            Object element = elements.at(i);
+            material_cb_model.addElement(element);
         }
     }
 
@@ -1292,7 +1329,6 @@ public class Window extends javax.swing.JFrame {
                 String description = mod_desc_materials.getText();
                 String brand = mod_brand_materials.getText();
                 String series_number = mod_snum_materials.getText();
-                mod_snum_materials.setText(material.getSeries_number());
                 material.setName(name);
                 material.setDescription(description);
                 material.setBrand(brand);
@@ -1307,8 +1343,69 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_modify_materialsActionPerformed
 
     private void btn_delete_materialsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_delete_materialsActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_btn_delete_materialsActionPerformed
+
+    private void btn_create_employeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_create_employeesActionPerformed
+        String id = idnum_employees.getText();
+        if (application.indexOfEmployee(id) == -1) {
+            if (!id.isEmpty()) {
+                String name = name_employees.getText();
+                int age = (int) age_employees.getValue();
+                String address = address_employees.getText();
+                double salary = Double.parseDouble(salary_employees.getText());
+                Employee employee = new Employee(name, id, age, address, salary);
+                application.addEmployee(employee);
+                DefaultTableModel employees_tb_model = (DefaultTableModel) table_employees.getModel();
+                refreshMaterialsTable(employees_tb_model, application.getListOfEmployees());
+                refreshMaterialCombobox(cb_employees, application.getListOfEmployees());
+                name_employees.setText("");
+                address_employees.setText("");
+                salary_employees.setText("");
+                idnum_employees.setText("");
+                age_employees.setValue(0);
+            } else {
+                JOptionPane.showMessageDialog(this, "El empleado debe tener un id válido.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "La identidad de los empleados no pueden repetirse.");
+        }
+    }//GEN-LAST:event_btn_create_employeesActionPerformed
+
+    private void cb_employeesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_employeesItemStateChanged
+        DefaultComboBoxModel employee_cb_model = (DefaultComboBoxModel) cb_employees.getModel();
+        Employee employee = (Employee) employee_cb_model.getSelectedItem();
+        mod_name_employees.setText(employee.getNames());
+        mod_address_employees.setText(employee.getAddress());
+        mod_salary_employees.setText("" + employee.getSalary());
+        mod_idnum_employees.setText(employee.getId_number());
+        mod_age_employees.setValue(employee.getAge());
+    }//GEN-LAST:event_cb_employeesItemStateChanged
+
+    private void btn_modify_employeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modify_employeesActionPerformed
+        DefaultComboBoxModel employee_cb_model = (DefaultComboBoxModel) cb_employees.getModel();
+        Employee employee = (Employee) employee_cb_model.getSelectedItem();
+        String id = mod_idnum_employees.getText();
+        if (application.indexOfEmployee(id) == -1 || id.equals(employee.getId_number())) {
+            if (!id.isEmpty()) {
+                DefaultTableModel employee_tb_model = (DefaultTableModel) table_employees.getModel();
+                String name = mod_name_employees.getText();
+                String address = mod_address_employees.getText();
+                Double salary = Double.parseDouble(mod_salary_employees.getText());
+                int age = (int) mod_age_employees.getValue();
+                employee.setNames(name);
+                employee.setId_number(id);
+                employee.setSalary(salary);
+                employee.setAge(age);
+                employee.setAddress(address);
+                refreshMaterialsTable(employee_tb_model, application.getListOfEmployees());
+            } else {
+                JOptionPane.showMessageDialog(this, "El empleado debe tener un nombre válido.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "La identidad de los empleados no puede repetirse.");
+        }
+    }//GEN-LAST:event_btn_modify_employeesActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {

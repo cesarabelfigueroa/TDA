@@ -12,6 +12,8 @@ public class Application {
     private Queue employees = new Queue();
     private Stack materials = new Stack();
     private LinkedList inventoryOfMaterials = new LinkedList();
+    private LinkedList listOfEmployees = new LinkedList();
+    private LinkedList listOfMaterials = new LinkedList();
 
     public Application() {
 
@@ -21,18 +23,17 @@ public class Application {
         return inventoryOfMaterials;
     }
 
-    public void setInventoryOfMaterials(LinkedList inventoryOfMaterials) {
+    public void setlistOfMaterials(LinkedList inventoryOfMaterials) {
         this.inventoryOfMaterials = inventoryOfMaterials;
     }
 
     public LinkedList getMaterialsNames() {
-        return materialsNames;
+        return listOfMaterials;
     }
 
     public void setMaterialsNames(LinkedList materialsNames) {
-        this.materialsNames = materialsNames;
+        this.listOfMaterials = materialsNames;
     }
-    private LinkedList materialsNames = new LinkedList();
 
     public Queue getProducts() {
         return products;
@@ -58,6 +59,14 @@ public class Application {
         this.materials = materials;
     }
 
+    public LinkedList getListOfEmployees() {
+        return listOfEmployees;
+    }
+
+    public void setListOfEmployees(LinkedList listOfEmployees) {
+        this.listOfEmployees = listOfEmployees;
+    }
+
     public void produce() {
         ExecutorService executor = Executors.newFixedThreadPool(employees.getSize());
         while (!products.isEmpty()) {
@@ -76,10 +85,10 @@ public class Application {
     }
 
     public void addMaterial(Material material) {
-        materialsNames.insert(materialsNames.getSize(), material);
+        listOfMaterials.insert(listOfMaterials.getSize(), material);
         inventoryOfMaterials = new LinkedList();
-        for (int i = 0; i < materialsNames.getSize(); i++) {
-            material = (Material) materialsNames.at(i);
+        for (int i = 0; i < listOfMaterials.getSize(); i++) {
+            material = (Material) listOfMaterials.at(i);
             if (inventoryOfMaterials.getSize() == 0) {
                 Stack temporal = new Stack();
                 temporal.push(material);
@@ -107,10 +116,10 @@ public class Application {
         if (material != null) {
             int index = indexOfMaterial(material.getName());
             if (index != -1) {
-                materialsNames.remove(index);
+                listOfMaterials.remove(index);
                 inventoryOfMaterials = new LinkedList();
-                for (int i = 0; i < materialsNames.getSize(); i++) {
-                    material = (Material) materialsNames.at(i);
+                for (int i = 0; i < listOfMaterials.getSize(); i++) {
+                    material = (Material) listOfMaterials.at(i);
                     if (inventoryOfMaterials.getSize() == 0) {
                         Stack temporal = new Stack();
                         temporal.push(material);
@@ -135,15 +144,44 @@ public class Application {
             }
         }
     }
-    
-    public void addEmployee(){}
+
+    public void addEmployee(Employee employee) {
+        listOfEmployees.insert(listOfEmployees.getSize(), employee);
+        employees.queue(employee);
+    }
 
     public int indexOfMaterial(String name) {
-        for (int i = 0; i < materialsNames.getSize(); i++) {
-            if (((Material) materialsNames.at(i)).getName().equals(name)) {
+        for (int i = 0; i < listOfMaterials.getSize(); i++) {
+            if (((Material) listOfMaterials.at(i)).getName().equals(name)) {
                 return i;
             }
         }
         return -1;
+    }
+
+    public void deleteEmployee(Employee employee) {
+        int index = listOfEmployees.find(employee);
+        if (index != -1) {
+            listOfEmployees.remove(index);
+            Queue temporal = new Queue();
+            while (!employees.isEmpty()) {
+                if (employees.peek().equals(employee)) {
+                    employees.dequeue();
+                } else {
+                    temporal.queue(employees.dequeue());
+                }
+            }
+            employees = temporal;
+        }
+    }
+
+    public int indexOfEmployee(String id) {
+        for (int i = 0; i < listOfEmployees.getSize(); i++) {
+            if (((Employee) listOfEmployees.at(i)).getId_number().equals(id)) {
+                return i;
+            }
+        }
+        return -1;
+
     }
 }
