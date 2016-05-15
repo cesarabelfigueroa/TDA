@@ -9,6 +9,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import org.jvnet.substance.SubstanceLookAndFeel;
 
@@ -78,6 +79,7 @@ public class Window extends javax.swing.JFrame {
         btn_add_materials = new javax.swing.JButton();
         jScrollPane13 = new javax.swing.JScrollPane();
         mat_prod_2 = new javax.swing.JTable();
+        btn_dt_materials = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         mod_name_products = new javax.swing.JTextField();
@@ -89,12 +91,6 @@ public class Window extends javax.swing.JFrame {
         btn_modify_products = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
         cb_products = new javax.swing.JComboBox<>();
-        jScrollPane9 = new javax.swing.JScrollPane();
-        table_addmaterial = new javax.swing.JTable();
-        btn_modify_add_material = new javax.swing.JButton();
-        jScrollPane12 = new javax.swing.JScrollPane();
-        table_removematerial = new javax.swing.JTable();
-        btn_modify_remove_material = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         table_products = new javax.swing.JTable();
@@ -441,6 +437,11 @@ public class Window extends javax.swing.JFrame {
 
         btn_create_products.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/create.png"))); // NOI18N
         btn_create_products.setText("CREATE");
+        btn_create_products.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_create_productsActionPerformed(evt);
+            }
+        });
 
         mat_prod_1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -449,10 +450,23 @@ public class Window extends javax.swing.JFrame {
             new String [] {
                 "NAME", "DESCRIPTION"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane7.setViewportView(mat_prod_1);
 
         btn_add_materials.setText("ADD MATERIAL");
+        btn_add_materials.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_add_materialsActionPerformed(evt);
+            }
+        });
 
         mat_prod_2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -461,30 +475,52 @@ public class Window extends javax.swing.JFrame {
             new String [] {
                 "NAME", "DESCRIPTION"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        mat_prod_2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mat_prod_2MouseClicked(evt);
+            }
+        });
         jScrollPane13.setViewportView(mat_prod_2);
+
+        btn_dt_materials.setText("DELETE MATERIAL");
+        btn_dt_materials.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                btn_dt_materialsFocusLost(evt);
+            }
+        });
+        btn_dt_materials.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_dt_materialsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel15))
-                        .addGap(32, 32, 32)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                            .addComponent(time_products)
-                            .addComponent(name_products)))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(btn_create_products, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel15))
+                .addGap(32, 32, 32)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                        .addComponent(time_products)
+                        .addComponent(name_products))
+                    .addComponent(btn_create_products, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                         .addComponent(btn_add_materials)
@@ -495,6 +531,10 @@ public class Window extends javax.swing.JFrame {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_dt_materials)
+                .addGap(131, 131, 131))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -514,19 +554,18 @@ public class Window extends javax.swing.JFrame {
                         .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btn_add_materials)))
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(time_products, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel15))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                        .addComponent(btn_create_products, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(71, 71, 71))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(36, 36, 36)
+                        .addComponent(btn_create_products, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_dt_materials)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("NEW", jPanel7);
@@ -543,35 +582,17 @@ public class Window extends javax.swing.JFrame {
 
         btn_modify_products.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/check.png"))); // NOI18N
         btn_modify_products.setText("SAVE");
+        btn_modify_products.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modify_productsActionPerformed(evt);
+            }
+        });
 
         jLabel21.setText("SELECT PRODUCT:");
 
-        table_addmaterial.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "NAME", "DESCRIPTION"
-            }
-        ));
-        jScrollPane9.setViewportView(table_addmaterial);
-
-        btn_modify_add_material.setText("ADD MATERIAL");
-
-        table_removematerial.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "NAME", "DESCRIPTION"
-            }
-        ));
-        jScrollPane12.setViewportView(table_removematerial);
-
-        btn_modify_remove_material.setText("REMOVE MATERIAL");
-        btn_modify_remove_material.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_modify_remove_materialMouseClicked(evt);
+        cb_products.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_productsItemStateChanged(evt);
             }
         });
 
@@ -579,74 +600,54 @@ public class Window extends javax.swing.JFrame {
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
+                        .addGap(317, 317, 317)
+                        .addComponent(btn_modify_products, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
+                        .addGap(176, 176, 176)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel17)
                             .addComponent(jLabel21)
                             .addComponent(jLabel18)
                             .addComponent(jLabel19))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addGap(37, 37, 37)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(mod_name_products, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cb_products, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(mod_time_products, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(65, 65, 65))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(btn_modify_products, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(btn_modify_add_material)
-                        .addGap(128, 128, 128))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addGap(113, 113, 113)
-                                .addComponent(btn_modify_remove_material)))
-                        .addContainerGap())))
+                            .addComponent(mod_name_products, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cb_products, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(mod_time_products, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
+                .addGap(44, 44, 44)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel21)
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addGap(53, 53, 53)
+                                .addComponent(jLabel17)))
                         .addGap(18, 18, 18)
-                        .addComponent(btn_modify_add_material)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_modify_remove_material))
+                        .addComponent(jLabel18)
+                        .addGap(93, 93, 93)
+                        .addComponent(jLabel19))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(cb_products, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel21))
+                            .addComponent(cb_products, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addGap(48, 48, 48)
-                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel17)
-                                    .addComponent(mod_name_products, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(mod_name_products, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel18))
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(mod_time_products, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel19))
-                        .addGap(71, 71, 71)
-                        .addComponent(btn_modify_products, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(59, 59, 59))
+                        .addComponent(mod_time_products, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(42, 42, 42)
+                .addComponent(btn_modify_products, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("MODIFY", jPanel8);
@@ -662,9 +663,16 @@ public class Window extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jScrollPane6.setViewportView(table_products);
@@ -676,6 +684,11 @@ public class Window extends javax.swing.JFrame {
         btn_delete_products.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_delete_productsMouseClicked(evt);
+            }
+        });
+        btn_delete_products.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_delete_productsActionPerformed(evt);
             }
         });
 
@@ -1131,6 +1144,11 @@ public class Window extends javax.swing.JFrame {
         );
 
         menu_delete.setText("DELETE");
+        menu_delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_deleteActionPerformed(evt);
+            }
+        });
         pp_menu.add(menu_delete);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1257,10 +1275,12 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_materialsMouseClicked
 
     private void btn_productsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_productsMouseClicked
+        refreshMaterialsTable(mat_prod_1, application.getMaterialsNames());
         jd_products.setModal(true);
         jd_products.pack();
         jd_products.setLocationRelativeTo(this);
         jd_products.setVisible(true);
+
     }//GEN-LAST:event_btn_productsMouseClicked
 
     private void btn_employeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_employeesMouseClicked
@@ -1292,14 +1312,6 @@ public class Window extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_delete_materialsMouseClicked
 
-    private void btn_modify_remove_materialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_modify_remove_materialMouseClicked
-        if (table_removematerial.getSelectedRow() >= 0) {
-            DefaultTableModel modelo = (DefaultTableModel) table_removematerial.getModel();
-            modelo.removeRow(table_removematerial.getSelectedRow());
-            table_removematerial.setModel(modelo);
-        }
-    }//GEN-LAST:event_btn_modify_remove_materialMouseClicked
-
     private void btn_delete_productsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_delete_productsMouseClicked
         if (table_products.getSelectedRow() >= 0) {
             DefaultTableModel modelo = (DefaultTableModel) table_products.getModel();
@@ -1324,7 +1336,8 @@ public class Window extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_delete_employeesMouseClicked
 
-    public void refreshMaterialsTable(DefaultTableModel material_tb_model, LinkedList elements) {
+    public void refreshMaterialsTable(JTable table, LinkedList elements) {
+        DefaultTableModel material_tb_model = (DefaultTableModel) table.getModel();
         material_tb_model.setRowCount(0);
         for (int i = 0; i < elements.getSize(); i++) {
             Object element = elements.at(i);
@@ -1344,8 +1357,14 @@ public class Window extends javax.swing.JFrame {
                 row[2] = employee.getAge();
                 row[3] = employee.getSalary();
                 material_tb_model.addRow(row);
+            } else if (element instanceof Product) {
+                Object[] row = new Object[3];
+                Product product = (Product) element;
+                row[0] = product.getName();
+                row[1] = product.getDescription();
+                row[2] = product.getTime();
+                material_tb_model.addRow(row);
             }
-
         }
     }
 
@@ -1367,8 +1386,7 @@ public class Window extends javax.swing.JFrame {
                 String series_number = snum_materials.getText();
                 Material material = new Material(name, description, brand, series_number);
                 application.addMaterial(material);
-                DefaultTableModel material_tb_model = (DefaultTableModel) table_materials.getModel();
-                refreshMaterialsTable(material_tb_model, application.getMaterialsNames());
+                refreshMaterialsTable(table_materials, application.getMaterialsNames());
                 refreshMaterialCombobox(cb_material, application.getMaterialsNames());
                 name_materials.setText("");
                 desc_materials.setText("");
@@ -1397,7 +1415,6 @@ public class Window extends javax.swing.JFrame {
         String name = mod_name_materials.getText();
         if (application.indexOfMaterial(name) == -1 || name.equals(material.getName())) {
             if (!name.isEmpty()) {
-                DefaultTableModel material_tb_model = (DefaultTableModel) table_materials.getModel();
                 String description = mod_desc_materials.getText();
                 String brand = mod_brand_materials.getText();
                 String series_number = mod_snum_materials.getText();
@@ -1405,7 +1422,7 @@ public class Window extends javax.swing.JFrame {
                 material.setDescription(description);
                 material.setBrand(brand);
                 material.setSeries_number(series_number);
-                refreshMaterialsTable(material_tb_model, application.getMaterialsNames());
+                refreshMaterialsTable(table_materials, application.getMaterialsNames());
             } else {
                 JOptionPane.showMessageDialog(this, "El material debe tener un nombre válido.");
             }
@@ -1428,8 +1445,7 @@ public class Window extends javax.swing.JFrame {
                 double salary = Double.parseDouble(salary_employees.getText());
                 Employee employee = new Employee(name, id, age, address, salary);
                 application.addEmployee(employee);
-                DefaultTableModel employees_tb_model = (DefaultTableModel) table_employees.getModel();
-                refreshMaterialsTable(employees_tb_model, application.getListOfEmployees());
+                refreshMaterialsTable(table_employees, application.getListOfEmployees());
                 refreshMaterialCombobox(cb_employees, application.getListOfEmployees());
                 name_employees.setText("");
                 address_employees.setText("");
@@ -1460,7 +1476,6 @@ public class Window extends javax.swing.JFrame {
         String id = mod_idnum_employees.getText();
         if (application.indexOfEmployee(id) == -1 || id.equals(employee.getId_number())) {
             if (!id.isEmpty()) {
-                DefaultTableModel employee_tb_model = (DefaultTableModel) table_employees.getModel();
                 String name = mod_name_employees.getText();
                 String address = mod_address_employees.getText();
                 Double salary = Double.parseDouble(mod_salary_employees.getText());
@@ -1470,7 +1485,7 @@ public class Window extends javax.swing.JFrame {
                 employee.setSalary(salary);
                 employee.setAge(age);
                 employee.setAddress(address);
-                refreshMaterialsTable(employee_tb_model, application.getListOfEmployees());
+                refreshMaterialsTable(table_employees, application.getListOfEmployees());
             } else {
                 JOptionPane.showMessageDialog(this, "El empleado debe tener un nombre válido.");
             }
@@ -1480,18 +1495,126 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_modify_employeesActionPerformed
 
     private void btn_add_product_assemblyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_product_assemblyMouseClicked
-        // TODO add your handling code here:
-        if(list_products.getSelectedIndex()>=0){
-            DefaultListModel listModel= (DefaultListModel)list_products.getModel();
+        if (list_products.getSelectedIndex() >= 0) {
+            DefaultListModel listModel = (DefaultListModel) list_products.getModel();
             DefaultTableModel tableModel = (DefaultTableModel) table_products_assembling.getModel();
-            String name=((Product)listModel.get(list_products.getSelectedIndex())).getName();
-            int time=((Product)listModel.get(list_products.getSelectedIndex())).getTime();
-            Object[] newRow={name,time};
+            String name = ((Product) listModel.get(list_products.getSelectedIndex())).getName();
+            int time = ((Product) listModel.get(list_products.getSelectedIndex())).getTime();
+            Object[] newRow = {name, time};
             tableModel.addRow(newRow);
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "No Product Selected");
         }
     }//GEN-LAST:event_btn_add_product_assemblyMouseClicked
+
+    private void menu_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_deleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menu_deleteActionPerformed
+
+    private void btn_create_productsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_create_productsActionPerformed
+        String name = name_products.getText();
+        if (application.indexOfProduct(name) == -1) {
+            if (!name.isEmpty()) {
+                String description = desc_products.getText();
+                int time = Integer.parseInt(time_products.getText());
+                Product product = new Product(name, description, time);
+                DefaultTableModel modelo = (DefaultTableModel) mat_prod_2.getModel();
+                for (int i = 0; i < mat_prod_2.getRowCount(); i++) {
+                    Material material = (Material) application.getMaterialsNames().at(application.indexOfMaterial(modelo.getValueAt(i, 0).toString()));
+                    product.getMaterials().insert(product.getMaterials().getSize(), material);
+                }
+                application.addProduct(product);
+                refreshMaterialCombobox(cb_products, application.getCatalog_products());
+                refreshMaterialsTable(table_products, application.getCatalog_products());
+                name_products.setText("");
+                desc_products.setText("");
+                time_products.setText("");
+                modelo = (DefaultTableModel) mat_prod_2.getModel();
+                modelo.setRowCount(0);
+                this.refreshMaterialsTable(mat_prod_1, application.getMaterialsNames());
+            } else {
+                JOptionPane.showMessageDialog(this, "El producto debe tener un nombre válido.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "El nombre de los productos no debe repetirse.");
+        }
+    }//GEN-LAST:event_btn_create_productsActionPerformed
+
+    private void btn_dt_materialsFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btn_dt_materialsFocusLost
+
+    }//GEN-LAST:event_btn_dt_materialsFocusLost
+
+    private void btn_add_materialsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_materialsActionPerformed
+        if (mat_prod_1.getSelectedRow() >= 0) {
+            Material material = (Material) application.getListOfMaterials().at(application.indexOfMaterial(mat_prod_1.getValueAt(mat_prod_1.getSelectedRow(), 0).toString()));
+            DefaultTableModel material_table_2 = (DefaultTableModel) mat_prod_2.getModel();
+            DefaultTableModel modelo = (DefaultTableModel) mat_prod_1.getModel();
+            Object[] row = new Object[2];
+            row[0] = material.getName();
+            row[1] = material.getDescription();
+            material_table_2.addRow(row);
+            modelo.removeRow(mat_prod_1.getSelectedRow());
+            table_employees.setModel(modelo);
+        }
+    }//GEN-LAST:event_btn_add_materialsActionPerformed
+
+    private void mat_prod_2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mat_prod_2MouseClicked
+
+    }//GEN-LAST:event_mat_prod_2MouseClicked
+
+    private void btn_dt_materialsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dt_materialsActionPerformed
+        if (mat_prod_2.getSelectedRow() >= 0) {
+            Material material = (Material) application.getListOfMaterials().at(application.indexOfMaterial(mat_prod_2.getValueAt(mat_prod_2.getSelectedRow(), 0).toString()));
+            DefaultTableModel material_table_2 = (DefaultTableModel) mat_prod_1.getModel();
+            DefaultTableModel modelo = (DefaultTableModel) mat_prod_2.getModel();
+            Object[] row = new Object[2];
+            row[0] = material.getName();
+            row[1] = material.getDescription();
+            material_table_2.addRow(row);
+            modelo.removeRow(mat_prod_2.getSelectedRow());
+            mat_prod_2.setModel(modelo);
+        }
+    }//GEN-LAST:event_btn_dt_materialsActionPerformed
+
+    private void cb_productsItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_productsItemStateChanged
+        DefaultComboBoxModel material_cb_model = (DefaultComboBoxModel) cb_products.getModel();
+        Product product = (Product) material_cb_model.getSelectedItem();
+        mod_name_products.setText(product.getName());
+        mod_desc_products.setText(product.getDescription());
+        mod_time_products.setText("" + product.getTime());
+    }//GEN-LAST:event_cb_productsItemStateChanged
+
+    private void btn_modify_productsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modify_productsActionPerformed
+        DefaultComboBoxModel material_cb_model = (DefaultComboBoxModel) cb_products.getModel();
+        Product product = (Product) material_cb_model.getSelectedItem();
+        String name = mod_name_products.getText();
+        if (application.indexOfProduct(name) == -1 || product.getName().equals(name)) {
+            if (!name.isEmpty()) {
+                product.setName(mod_name_products.getText());
+                product.setDescription(mod_desc_products.getText());
+                product.setTime(Integer.parseInt(mod_time_products.getText()));
+                refreshMaterialsTable(table_products, application.getCatalog_products());
+            } else {
+                JOptionPane.showMessageDialog(this, "El producto debe tener un nombre válido.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "El nombre de los productos no debe repetirse.");
+        }
+    }//GEN-LAST:event_btn_modify_productsActionPerformed
+
+    private void btn_delete_productsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_delete_productsActionPerformed
+        if (table_products.getSelectedRow() >= 0) {
+            mod_name_products.setText("");
+            mod_desc_products.setText("");
+            mod_time_products.setText("");
+            DefaultTableModel modelo = (DefaultTableModel) table_products.getModel();
+            String name = (String) modelo.getValueAt(table_products.getSelectedRow(), 0);
+            application.deleteProduct((Product) application.getCatalog_products().at(application.indexOfProduct(name)));
+            refreshMaterialCombobox(cb_products, application.getCatalog_products());
+            modelo.removeRow(table_products.getSelectedRow());
+            table_employees.setModel(modelo);
+        }
+    }//GEN-LAST:event_btn_delete_productsActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1513,13 +1636,12 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JButton btn_delete_employees;
     private javax.swing.JButton btn_delete_materials;
     private javax.swing.JButton btn_delete_products;
+    private javax.swing.JButton btn_dt_materials;
     private javax.swing.JButton btn_employees;
     private javax.swing.JButton btn_materials;
-    private javax.swing.JButton btn_modify_add_material;
     private javax.swing.JButton btn_modify_employees;
     private javax.swing.JButton btn_modify_materials;
     private javax.swing.JButton btn_modify_products;
-    private javax.swing.JButton btn_modify_remove_material;
     private javax.swing.JButton btn_products;
     private javax.swing.JComboBox<String> cb_employees;
     private javax.swing.JComboBox<String> cb_material;
@@ -1586,7 +1708,6 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
-    private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane17;
     private javax.swing.JScrollPane jScrollPane18;
@@ -1597,7 +1718,6 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
@@ -1628,12 +1748,10 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JPopupMenu pp_menu;
     private javax.swing.JTextField salary_employees;
     private javax.swing.JTextField snum_materials;
-    private javax.swing.JTable table_addmaterial;
     private javax.swing.JTable table_employees;
     private javax.swing.JTable table_materials;
     private javax.swing.JTable table_products;
     private javax.swing.JTable table_products_assembling;
-    private javax.swing.JTable table_removematerial;
     private javax.swing.JTextField time_products;
     // End of variables declaration//GEN-END:variables
 }

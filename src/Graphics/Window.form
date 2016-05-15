@@ -526,27 +526,22 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jScrollPane4" pref="230" max="32767" attributes="0"/>
-                                      <Component id="time_products" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="name_products" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
-                                  <Component id="btn_create_products" min="-2" pref="231" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="77" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jScrollPane4" pref="230" max="32767" attributes="0"/>
+                                  <Component id="time_products" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="name_products" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="btn_create_products" min="-2" pref="231" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="59" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="btn_add_materials" min="-2" max="-2" attributes="0"/>
@@ -561,6 +556,11 @@
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btn_dt_materials" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -587,23 +587,21 @@
                                   <Component id="btn_add_materials" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="time_products" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="72" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                                   <Component id="btn_create_products" min="-2" pref="56" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane13" min="-2" pref="125" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="jScrollPane13" min="-2" pref="125" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btn_dt_materials" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="34" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -650,6 +648,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="CREATE"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_create_productsActionPerformed"/>
+                  </Events>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane7">
                   <AuxValues>
@@ -662,8 +663,8 @@
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="2" rowCount="0">
-                            <Column editable="true" title="NAME" type="java.lang.Object"/>
-                            <Column editable="true" title="DESCRIPTION" type="java.lang.Object"/>
+                            <Column editable="false" title="NAME" type="java.lang.Object"/>
+                            <Column editable="false" title="DESCRIPTION" type="java.lang.Object"/>
                           </Table>
                         </Property>
                       </Properties>
@@ -674,6 +675,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="ADD MATERIAL"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_add_materialsActionPerformed"/>
+                  </Events>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane13">
                   <AuxValues>
@@ -686,14 +690,26 @@
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="2" rowCount="0">
-                            <Column editable="true" title="NAME" type="java.lang.Object"/>
-                            <Column editable="true" title="DESCRIPTION" type="java.lang.Object"/>
+                            <Column editable="false" title="NAME" type="java.lang.Object"/>
+                            <Column editable="false" title="DESCRIPTION" type="java.lang.Object"/>
                           </Table>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mat_prod_2MouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JButton" name="btn_dt_materials">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="DELETE MATERIAL"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="btn_dt_materialsFocusLost"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_dt_materialsActionPerformed"/>
+                  </Events>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="jPanel8">
@@ -708,95 +724,68 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="317" max="-2" attributes="0"/>
+                                  <Component id="btn_modify_products" min="-2" pref="263" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="44" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="mod_name_products" alignment="1" min="-2" pref="194" max="-2" attributes="0"/>
-                                      <Component id="cb_products" alignment="1" min="-2" pref="194" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane5" alignment="1" min="-2" pref="194" max="-2" attributes="0"/>
-                                      <Component id="mod_time_products" alignment="1" min="-2" pref="194" max="-2" attributes="0"/>
+                                      <Component id="mod_name_products" alignment="1" min="-2" pref="263" max="-2" attributes="0"/>
+                                      <Component id="cb_products" alignment="1" min="-2" pref="263" max="-2" attributes="0"/>
+                                      <Component id="jScrollPane5" alignment="1" min="-2" pref="263" max="-2" attributes="0"/>
+                                      <Component id="mod_time_products" alignment="1" min="-2" pref="263" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
-                                  <Component id="btn_modify_products" min="-2" pref="231" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
-                                  <Component id="btn_modify_add_material" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jScrollPane9" min="-2" pref="319" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane12" min="-2" pref="319" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
-                                          <Component id="btn_modify_remove_material" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <EmptySpace pref="195" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="46" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jScrollPane9" min="-2" pref="125" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel21" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                                          <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btn_modify_add_material" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane12" min="-2" pref="125" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btn_modify_remove_material" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+                                  <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                          <Component id="cb_products" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="cb_products" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="mod_name_products" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="mod_name_products" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jScrollPane5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="jScrollPane5" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="mod_time_products" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
-                                  <Component id="btn_modify_products" min="-2" pref="59" max="-2" attributes="0"/>
+                                  <Component id="mod_time_products" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                          <Component id="btn_modify_products" min="-2" pref="59" max="-2" attributes="0"/>
+                          <EmptySpace pref="70" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -843,6 +832,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="SAVE"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_modify_productsActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel21">
                   <Properties>
@@ -855,60 +847,12 @@
                       <StringArray count="0"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cb_productsItemStateChanged"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
-                </Component>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane9">
-                  <AuxValues>
-                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                  </AuxValues>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                  <SubComponents>
-                    <Component class="javax.swing.JTable" name="table_addmaterial">
-                      <Properties>
-                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="2" rowCount="0">
-                            <Column editable="true" title="NAME" type="java.lang.Object"/>
-                            <Column editable="true" title="DESCRIPTION" type="java.lang.Object"/>
-                          </Table>
-                        </Property>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
-                <Component class="javax.swing.JButton" name="btn_modify_add_material">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="ADD MATERIAL"/>
-                  </Properties>
-                </Component>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane12">
-                  <AuxValues>
-                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                  </AuxValues>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                  <SubComponents>
-                    <Component class="javax.swing.JTable" name="table_removematerial">
-                      <Properties>
-                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="2" rowCount="0">
-                            <Column editable="true" title="NAME" type="java.lang.Object"/>
-                            <Column editable="true" title="DESCRIPTION" type="java.lang.Object"/>
-                          </Table>
-                        </Property>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
-                <Component class="javax.swing.JButton" name="btn_modify_remove_material">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="REMOVE MATERIAL"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_modify_remove_materialMouseClicked"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -968,9 +912,9 @@
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="3" rowCount="0">
-                            <Column editable="true" title="NAME" type="java.lang.String"/>
-                            <Column editable="true" title="DESCRIPTION" type="java.lang.String"/>
-                            <Column editable="true" title="TIME" type="java.lang.Object"/>
+                            <Column editable="false" title="NAME" type="java.lang.String"/>
+                            <Column editable="false" title="DESCRIPTION" type="java.lang.String"/>
+                            <Column editable="false" title="TIME" type="java.lang.Object"/>
                           </Table>
                         </Property>
                       </Properties>
@@ -991,6 +935,7 @@
                   </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_delete_productsMouseClicked"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_delete_productsActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -1675,6 +1620,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="DELETE"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menu_deleteActionPerformed"/>
+          </Events>
         </MenuItem>
       </SubComponents>
     </Container>

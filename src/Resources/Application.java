@@ -11,6 +11,7 @@ public class Application {
     private Queue products = new Queue();
     private Queue employees = new Queue();
     private Stack materials = new Stack();
+    private LinkedList catalog_products = new LinkedList();
     private LinkedList inventoryOfMaterials = new LinkedList();
     private LinkedList listOfEmployees = new LinkedList();
     private LinkedList listOfMaterials = new LinkedList();
@@ -67,87 +68,20 @@ public class Application {
         this.listOfEmployees = listOfEmployees;
     }
 
-    public void produce() {
-        ExecutorService executor = Executors.newFixedThreadPool(employees.getSize());
-        while (!products.isEmpty()) {
-            if (!employees.isEmpty()) {
-                if (!materials.isEmpty()) {
-                    Product product = (Product) products.dequeue();
-                    Employee employee = (Employee) employees.dequeue();
-                    Material material = (Material) materials.pop();
-                    Runnable product_line = new ProductionLine(employee, product, material);
-                    executor.execute(product_line);
-                    employees.queue(employee);
-                }
-            }
-        }
-        executor.shutdown();
+    public LinkedList getCatalog_products() {
+        return catalog_products;
     }
 
-    public void addMaterial(Material material) {
-        listOfMaterials.insert(listOfMaterials.getSize(), material);
-        inventoryOfMaterials = new LinkedList();
-        for (int i = 0; i < listOfMaterials.getSize(); i++) {
-            material = (Material) listOfMaterials.at(i);
-            if (inventoryOfMaterials.getSize() == 0) {
-                Stack temporal = new Stack();
-                temporal.push(material);
-                inventoryOfMaterials.insert(inventoryOfMaterials.getSize(), temporal);
-            } else {
-                for (int j = 0; j < inventoryOfMaterials.getSize(); j++) {
-                    Stack temporal = (Stack) inventoryOfMaterials.at(j);
-                    if (!temporal.isEmpty()) {
-                        if (((Material) temporal.peek()).getSeries_number().equals(material.getSeries_number())) {
-                            temporal.push(material);
-                        }
-                    } else {
-                        temporal.push(material);
-                    }
-                }
-
-                Stack temporal = new Stack();
-                temporal.push(material);
-                inventoryOfMaterials.insert(inventoryOfMaterials.getSize(), temporal);
-            }
-        }
+    public void setCatalog_products(LinkedList catalog_products) {
+        this.catalog_products = catalog_products;
     }
 
-    public void deleteMaterial(Material material) {
-        if (material != null) {
-            int index = indexOfMaterial(material.getName());
-            if (index != -1) {
-                listOfMaterials.remove(index);
-                inventoryOfMaterials = new LinkedList();
-                for (int i = 0; i < listOfMaterials.getSize(); i++) {
-                    material = (Material) listOfMaterials.at(i);
-                    if (inventoryOfMaterials.getSize() == 0) {
-                        Stack temporal = new Stack();
-                        temporal.push(material);
-                        inventoryOfMaterials.insert(inventoryOfMaterials.getSize(), temporal);
-                    } else {
-                        for (int j = 0; j < inventoryOfMaterials.getSize(); j++) {
-                            Stack temporal = (Stack) inventoryOfMaterials.at(j);
-                            if (!temporal.isEmpty()) {
-                                if (((Material) temporal.peek()).getSeries_number().equals(material.getSeries_number())) {
-                                    temporal.push(material);
-                                }
-                            } else {
-                                temporal.push(material);
-                            }
-                        }
-
-                        Stack temporal = new Stack();
-                        temporal.push(material);
-                        inventoryOfMaterials.insert(inventoryOfMaterials.getSize(), temporal);
-                    }
-                }
-            }
-        }
+    public LinkedList getListOfMaterials() {
+        return listOfMaterials;
     }
 
-    public void addEmployee(Employee employee) {
-        listOfEmployees.insert(listOfEmployees.getSize(), employee);
-        employees.queue(employee);
+    public void setListOfMaterials(LinkedList listOfMaterials) {
+        this.listOfMaterials = listOfMaterials;
     }
 
     public int indexOfMaterial(String name) {
@@ -157,6 +91,56 @@ public class Application {
             }
         }
         return -1;
+    }
+
+    public int indexOfEmployee(String id) {
+        for (int i = 0; i < listOfEmployees.getSize(); i++) {
+            if (((Employee) listOfEmployees.at(i)).getId_number().equals(id)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int indexOfProduct(String name) {
+        for (int i = 0; i < catalog_products.getSize(); i++) {
+            if (((Product) catalog_products.at(i)).getName().equals(name)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public void addMaterial(Material material) {
+        listOfMaterials.insert(listOfMaterials.getSize(), material);
+        refreshMaterialsStack();
+    }
+
+    public void addProduct(Product product) {
+        catalog_products.insert(catalog_products.getSize(), product);
+    }
+
+    public void addEmployee(Employee employee) {
+        listOfEmployees.insert(listOfEmployees.getSize(), employee);
+        employees.queue(employee);
+    }
+
+    public void deleteProduct(Product product) {
+        int index = catalog_products.find(product);
+        if (index != -1) {
+            catalog_products.remove(index);
+        }
+    }
+
+    public void deleteMaterial(Material material) {
+        if (material != null) {
+            boolean status = false;
+            int index = indexOfMaterial(material.getName());
+            if (index != -1) {
+                listOfMaterials.remove(index);
+                refreshMaterialsStack();
+            }
+        }
     }
 
     public void deleteEmployee(Employee employee) {
@@ -175,13 +159,45 @@ public class Application {
         }
     }
 
-    public int indexOfEmployee(String id) {
-        for (int i = 0; i < listOfEmployees.getSize(); i++) {
-            if (((Employee) listOfEmployees.at(i)).getId_number().equals(id)) {
-                return i;
+    public void refreshMaterialsStack() {
+        inventoryOfMaterials = new LinkedList();
+        for (int i = 0; i < listOfMaterials.getSize(); i++) {
+            boolean status = false;
+            Material material = (Material) listOfMaterials.at(i);
+            for (int j = 0; j < inventoryOfMaterials.getSize(); j++) {
+                Stack temporal = (Stack) inventoryOfMaterials.at(j);
+                if (!temporal.isEmpty()) {
+                    if (((Material) temporal.peek()).getSeries_number().equals(material.getSeries_number())) {
+                        temporal.push(material);
+                        status = true;
+                    }
+                } else {
+                    temporal.push(material);
+                    status = true;
+                }
+            }
+            if (!status) {
+                Stack temporal = new Stack();
+                temporal.push(material);
+                inventoryOfMaterials.insert(inventoryOfMaterials.getSize(), temporal);
             }
         }
-        return -1;
+    }
 
+    public void produce() {
+        ExecutorService executor = Executors.newFixedThreadPool(employees.getSize());
+        while (!products.isEmpty()) {
+            if (!employees.isEmpty()) {
+                if (!materials.isEmpty()) {
+                    Product product = (Product) products.dequeue();
+                    Employee employee = (Employee) employees.dequeue();
+                    Material material = (Material) materials.pop();
+                    Runnable product_line = new ProductionLine(employee, product, material);
+                    executor.execute(product_line);
+                    employees.queue(employee);
+                }
+            }
+        }
+        executor.shutdown();
     }
 }
