@@ -3,8 +3,10 @@ package Graphics;
 import Resources.Application;
 import Resources.Employee;
 import Resources.Material;
+import Resources.Product;
 import Structures.LinkedList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -140,8 +142,15 @@ public class Window extends javax.swing.JFrame {
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
-        cb_assembly = new javax.swing.JComboBox<>();
-        jProgressBar1 = new javax.swing.JProgressBar();
+        pb_assembling = new javax.swing.JProgressBar();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        list_products = new javax.swing.JList<>();
+        jLabel24 = new javax.swing.JLabel();
+        btn_add_product_assembly = new javax.swing.JButton();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        table_products_assembling = new javax.swing.JTable();
         pp_menu = new javax.swing.JPopupMenu();
         menu_delete = new javax.swing.JMenuItem();
         jPanel3 = new javax.swing.JPanel();
@@ -1016,46 +1025,109 @@ public class Window extends javax.swing.JFrame {
 
         jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/logo.png"))); // NOI18N
 
-        jLabel33.setText("SELECT PRODUCT: ");
+        jLabel33.setText("CHOOSE PRODUCT: ");
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/play.png"))); // NOI18N
+        jButton1.setText("START ASSEMBLING");
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/pause.png"))); // NOI18N
+        jButton2.setText("PAUSE ASSEMBLING");
+
+        jScrollPane10.setViewportView(list_products);
+
+        jLabel24.setText("PRODUCTS CHOSEN: ");
+
+        btn_add_product_assembly.setText("ADD >>>");
+        btn_add_product_assembly.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_add_product_assemblyMouseClicked(evt);
+            }
+        });
+
+        table_products_assembling.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "NAME", "TIME"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane11.setViewportView(table_products_assembling);
 
         javax.swing.GroupLayout jd_assemblyLayout = new javax.swing.GroupLayout(jd_assembly.getContentPane());
         jd_assembly.getContentPane().setLayout(jd_assemblyLayout);
         jd_assemblyLayout.setHorizontalGroup(
             jd_assemblyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_assemblyLayout.createSequentialGroup()
+                .addGap(189, 189, 189)
+                .addComponent(jLabel33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel24)
+                .addGap(245, 245, 245))
+            .addGroup(jd_assemblyLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76))
             .addGroup(jd_assemblyLayout.createSequentialGroup()
                 .addGroup(jd_assemblyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jd_assemblyLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(jd_assemblyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(91, 91, 91)
+                        .addGroup(jd_assemblyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(pb_assembling, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jd_assemblyLayout.createSequentialGroup()
-                                .addComponent(jLabel33)
-                                .addGap(43, 43, 43)
-                                .addComponent(cb_assembly, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(157, 157, 157)
-                        .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(btn_add_product_assembly)
+                                .addGap(26, 26, 26)
+                                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jd_assemblyLayout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 722, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                        .addGap(231, 231, 231)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(65, 65, 65)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
         jd_assemblyLayout.setVerticalGroup(
             jd_assemblyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_assemblyLayout.createSequentialGroup()
                 .addGroup(jd_assemblyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jd_assemblyLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel32))
-                    .addGroup(jd_assemblyLayout.createSequentialGroup()
                         .addGap(47, 47, 47)
-                        .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(48, 48, 48)
-                .addGroup(jd_assemblyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel33)
-                    .addComponent(cb_assembly, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(259, Short.MAX_VALUE))
+                        .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_assemblyLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel32)))
+                .addGap(74, 74, 74)
+                .addGroup(jd_assemblyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel24)
+                    .addComponent(jLabel33))
+                .addGroup(jd_assemblyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_assemblyLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jd_assemblyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                        .addComponent(pb_assembling, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addGroup(jd_assemblyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(73, 73, 73))
+                    .addGroup(jd_assemblyLayout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addComponent(btn_add_product_assembly)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         menu_delete.setText("DELETE");
@@ -1407,6 +1479,20 @@ public class Window extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_modify_employeesActionPerformed
 
+    private void btn_add_product_assemblyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_product_assemblyMouseClicked
+        // TODO add your handling code here:
+        if(list_products.getSelectedIndex()>=0){
+            DefaultListModel listModel= (DefaultListModel)list_products.getModel();
+            DefaultTableModel tableModel = (DefaultTableModel) table_products_assembling.getModel();
+            String name=((Product)listModel.get(list_products.getSelectedIndex())).getName();
+            int time=((Product)listModel.get(list_products.getSelectedIndex())).getTime();
+            Object[] newRow={name,time};
+            tableModel.addRow(newRow);
+        }else{
+            JOptionPane.showMessageDialog(this, "No Product Selected");
+        }
+    }//GEN-LAST:event_btn_add_product_assemblyMouseClicked
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -1419,6 +1505,7 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JSpinner age_employees;
     private javax.swing.JTextField brand_materials;
     private javax.swing.JButton btn_add_materials;
+    private javax.swing.JButton btn_add_product_assembly;
     private javax.swing.JButton btn_assembling;
     private javax.swing.JButton btn_create_employees;
     private javax.swing.JButton btn_create_materials;
@@ -1434,13 +1521,14 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JButton btn_modify_products;
     private javax.swing.JButton btn_modify_remove_material;
     private javax.swing.JButton btn_products;
-    private javax.swing.JComboBox<String> cb_assembly;
     private javax.swing.JComboBox<String> cb_employees;
     private javax.swing.JComboBox<String> cb_material;
     private javax.swing.JComboBox<String> cb_products;
     private javax.swing.JTextArea desc_materials;
     private javax.swing.JTextArea desc_products;
     private javax.swing.JTextField idnum_employees;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1457,6 +1545,7 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
@@ -1494,8 +1583,9 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane17;
@@ -1515,6 +1605,7 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JDialog jd_employees;
     private javax.swing.JDialog jd_materials;
     private javax.swing.JDialog jd_products;
+    private javax.swing.JList<String> list_products;
     private javax.swing.JTable mat_prod_1;
     private javax.swing.JTable mat_prod_2;
     private javax.swing.JMenuItem menu_delete;
@@ -1533,6 +1624,7 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JTextField name_employees;
     private javax.swing.JTextField name_materials;
     private javax.swing.JTextField name_products;
+    private javax.swing.JProgressBar pb_assembling;
     private javax.swing.JPopupMenu pp_menu;
     private javax.swing.JTextField salary_employees;
     private javax.swing.JTextField snum_materials;
@@ -1540,6 +1632,7 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JTable table_employees;
     private javax.swing.JTable table_materials;
     private javax.swing.JTable table_products;
+    private javax.swing.JTable table_products_assembling;
     private javax.swing.JTable table_removematerial;
     private javax.swing.JTextField time_products;
     // End of variables declaration//GEN-END:variables
