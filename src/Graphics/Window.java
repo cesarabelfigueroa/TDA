@@ -15,9 +15,10 @@ import org.jvnet.substance.SubstanceLookAndFeel;
 
 public class Window extends javax.swing.JFrame {
 
-    Application application = new Application();
+    Application application;
 
     public Window() {
+        application = new Application(pb_assembling);
         Window.setDefaultLookAndFeelDecorated(false);
         SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.RavenGraphiteGlassSkin");
         SubstanceLookAndFeel.setCurrentWatermark("org.jvnet.substance.watermark.SubstanceMetalWallWatermark");
@@ -147,8 +148,6 @@ public class Window extends javax.swing.JFrame {
         btn_add_product_assembly = new javax.swing.JButton();
         jScrollPane11 = new javax.swing.JScrollPane();
         table_products_assembling = new javax.swing.JTable();
-        pp_menu = new javax.swing.JPopupMenu();
-        menu_delete = new javax.swing.JMenuItem();
         jPanel3 = new javax.swing.JPanel();
         btn_materials = new javax.swing.JButton();
         btn_products = new javax.swing.JButton();
@@ -1042,9 +1041,19 @@ public class Window extends javax.swing.JFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/play.png"))); // NOI18N
         jButton1.setText("START ASSEMBLING");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/pause.png"))); // NOI18N
         jButton2.setText("PAUSE ASSEMBLING");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jScrollPane10.setViewportView(list_products);
 
@@ -1142,14 +1151,6 @@ public class Window extends javax.swing.JFrame {
                         .addComponent(btn_add_product_assembly)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
-
-        menu_delete.setText("DELETE");
-        menu_delete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menu_deleteActionPerformed(evt);
-            }
-        });
-        pp_menu.add(menu_delete);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1291,10 +1292,17 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_employeesMouseClicked
 
     private void btn_assemblingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_assemblingMouseClicked
+        list_products.setModel(new DefaultListModel());
+        DefaultListModel model = (DefaultListModel) list_products.getModel();
+        LinkedList products = application.getCatalog_products();
+        for (int i = 0; i < products.getSize(); i++) {
+            model.addElement(products.at(i));
+        }
         jd_assembly.setModal(true);
         jd_assembly.pack();
         jd_assembly.setLocationRelativeTo(this);
         jd_assembly.setVisible(true);
+
     }//GEN-LAST:event_btn_assemblingMouseClicked
 
     private void btn_delete_materialsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_delete_materialsMouseClicked
@@ -1507,10 +1515,6 @@ public class Window extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_add_product_assemblyMouseClicked
 
-    private void menu_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_deleteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_menu_deleteActionPerformed
-
     private void btn_create_productsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_create_productsActionPerformed
         String name = name_products.getText();
         if (application.indexOfProduct(name) == -1) {
@@ -1616,11 +1620,26 @@ public class Window extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_delete_productsActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        DefaultTableModel model = (DefaultTableModel) table_products_assembling.getModel();
+        for (int i = 0; i < model.getRowCount(); i++) {
+            String name = (String) model.getValueAt(i, 0);
+            application.getProducts().queue((Product) application.getCatalog_products().at(application.indexOfProduct(name)));
+            application.setValue(application.getValue() + ((Product) application.getProducts().peek()).getTime());
+        }
+        application.setStatus(true);
+        application.setProgress(pb_assembling);
+        application.start();
+        model.setRowCount(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        application.setStatus(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Window().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Window().setVisible(true);
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1728,7 +1747,6 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JList<String> list_products;
     private javax.swing.JTable mat_prod_1;
     private javax.swing.JTable mat_prod_2;
-    private javax.swing.JMenuItem menu_delete;
     private javax.swing.JTextArea mod_address_employees;
     private javax.swing.JSpinner mod_age_employees;
     private javax.swing.JTextField mod_brand_materials;
@@ -1745,7 +1763,6 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JTextField name_materials;
     private javax.swing.JTextField name_products;
     private javax.swing.JProgressBar pb_assembling;
-    private javax.swing.JPopupMenu pp_menu;
     private javax.swing.JTextField salary_employees;
     private javax.swing.JTextField snum_materials;
     private javax.swing.JTable table_employees;

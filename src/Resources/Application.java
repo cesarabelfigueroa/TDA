@@ -5,8 +5,10 @@ import Structures.Queue;
 import Structures.Stack;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import javax.swing.JOptionPane;
+import javax.swing.JProgressBar;
 
-public class Application {
+public class Application extends Thread {
 
     private Queue products = new Queue();
     private Queue employees = new Queue();
@@ -15,9 +17,20 @@ public class Application {
     private LinkedList inventoryOfMaterials = new LinkedList();
     private LinkedList listOfEmployees = new LinkedList();
     private LinkedList listOfMaterials = new LinkedList();
+    private boolean status = false;
+    private JProgressBar progress;
+    private int value = 0;
 
-    public Application() {
+    public Application(JProgressBar progress) {
+        this.progress = progress;
+    }
 
+    public JProgressBar getProgress() {
+        return progress;
+    }
+
+    public void setProgress(JProgressBar progress) {
+        this.progress = progress;
     }
 
     public LinkedList getInventoryOfMaterials() {
@@ -159,6 +172,14 @@ public class Application {
         }
     }
 
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
     public void refreshMaterialsStack() {
         inventoryOfMaterials = new LinkedList();
         for (int i = 0; i < listOfMaterials.getSize(); i++) {
@@ -184,20 +205,32 @@ public class Application {
         }
     }
 
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    @Override
+    public void run() {
+        produce();
+    }
+
     public void produce() {
         ExecutorService executor = Executors.newFixedThreadPool(employees.getSize());
-        while (!products.isEmpty()) {
+        while (!products.isEmpty() && status) {
             if (!employees.isEmpty()) {
-                if (!materials.isEmpty()) {
-                    Product product = (Product) products.dequeue();
-                    Employee employee = (Employee) employees.dequeue();
-                    Material material = (Material) materials.pop();
-                    Runnable product_line = new ProductionLine(employee, product, material);
-                    executor.execute(product_line);
-                    employees.queue(employee);
-                }
+                Product product = (Product) products.dequeue();
+                Employee employee = (Employee) employees.dequeue();
+                Runnable product_line = new ProductionLine(employee, product, product.getMaterials(), inventoryOfMaterials, listOfMaterials, progress, value);
+                ((ProductionLine) product_line).setStatus(status);
+                executor.execute(product_line);
+                employees.queue(employee);
             }
         }
+        status = false;
         executor.shutdown();
     }
 }
