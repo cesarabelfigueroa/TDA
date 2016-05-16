@@ -1638,8 +1638,10 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> {
-            new Window().setVisible(true);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Window().setVisible(true);
+            }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
